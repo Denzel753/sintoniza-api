@@ -396,7 +396,7 @@ var Classifier = {
 var CONFIG = {
   API: (location.hostname === 'localhost' || location.hostname === '127.0.0.1') ? 'http://localhost:5000' : 'https://sintoniza-api.onrender.com',
   PROXIES: ['https://api.allorigins.win/raw?url=', 'https://corsproxy.io/?'],
-  TIMEOUT_BACKEND: 3000,
+  TIMEOUT_BACKEND: 60000,
   TIMEOUT_PROXY: 6000,
   TIMEOUT_GOOGLE_NEWS: 5000,
   PAGE_SIZE: 20,
@@ -500,9 +500,9 @@ var Search = {
 
       tryFetch(proxy1, 6000).then(function(xml) { processXML(xml); }).catch(function() {
         Logger.warn('Proxy 1 falhou, tentando fallback');
-        tryFetch(proxy2, 6000).then(function(xml) { processXML(xml); }).catch(function(e) {
+        return tryFetch(proxy2, 6000).then(function(xml) { processXML(xml); }).catch(function(e) {
           Logger.error('Todos os proxies falharam', e.message);
-        }).finally(function() { done++; if(done===qs.length) Search._finish(all, cb); });
+        });
       }).finally(function() { done++; if(done===qs.length) Search._finish(all, cb); });
 
       function processXML(xml) {
