@@ -413,7 +413,8 @@ def trigger_scan():
 
 @app.route('/api/ping')
 def ping():
-    return jsonify({'ping':'pong','routes':[r.rule for r in app.url_map.iter_rules()]})
+    return jsonify({"ping": "pong", "routes": [r.rule for r in app.url_map.iter_rules()]})
+
 
 @app.route('/api/buscar')
 def buscar_web():
