@@ -484,6 +484,23 @@ def buscar_web():
     })
 
 
+import urllib.request
+import urllib.parse
+
+@app.route('/api/google-news')
+def google_news():
+    """Proxy para Google News RSS - evita CORS"""
+    q = request.args.get('q', 'concurso')
+    url = f"https://news.google.com/rss/search?q={urllib.parse.quote(q)}&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+    try:
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = resp.read()
+        return data, 200, {'Content-Type': 'application/xml', 'Access-Control-Allow-Origin': '*'}
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     print(f"🔔 Radar Concursos API rodando na porta {port}")
