@@ -394,11 +394,11 @@ var Classifier = {
 };
 
 var CONFIG = {
-  API: (location.hostname === 'localhost' || location.hostname === '127.0.0.1') ? 'http://localhost:5000' : 'https://sintoniza-api.onrender.com',
+  API: (location.hostname === 'localhost' || location.hostname === '127.0.0.1') ? 'http://localhost:5000' : '',
   PROXIES: ['https://api.allorigins.win/raw?url=', 'https://corsproxy.io/?'],
   TIMEOUT_BACKEND: 60000,
   TIMEOUT_PROXY: 6000,
-  TIMEOUT_GOOGLE_NEWS: 5000,
+  TIMEOUT_GOOGLE_NEWS: 15000,
   PAGE_SIZE: 20,
   SYNC_DEFAULT_INTERVAL: 30, // minutos
   LS_VERSION: 2,
@@ -410,18 +410,11 @@ var MOCK_DATA = [
   {titulo:"TJ-AC: 42 vagas para Analista - Inscrições abertas",url:"#",orgao:"TJ-AC",data:"2026-08-01",fonte:"Estratégia",esfera:"estadual",area:"tribunais",status:"aberto",vagas:"42",origem:"mock"},
   {titulo:"Prefeitura de Rio Branco: 80 vagas - Últimos dias!",url:"#",orgao:"Prefeitura de Rio Branco",data:"2026-07-20",fonte:"Diário Oficial",esfera:"municipal",area:"prefeituras",status:"encerrando",vagas:"80",origem:"mock"},
   {titulo:"INSS: 1.000 vagas autorizadas - Comissão formada",url:"#",orgao:"INSS",data:"2026-07-10",fonte:"Gran Cursos",esfera:"federal",area:"administrativa",status:"sinal",vagas:"1.000",origem:"mock"},
-  {titulo:"PM-RO: 200 vagas - Banca definida (FGV)",url:"#",orgao:"PM-RO",data:"2026-07-25",fonte:"Ache Concursos",esfera:"estadual",area:"policial",status:"em-breve",vagas:"200",origem:"mock"},
-  {titulo:"Receita Federal: 500 vagas previstas para 2026",url:"#",orgao:"Receita Federal",data:"2026-06-30",fonte:"Folha Dirigida",esfera:"federal",area:"fiscal",status:"sinal",vagas:"500",origem:"mock"},
-  {titulo:"Prefeitura de Cruzeiro do Sul: 30 vagas - Edital",url:"#",orgao:"Prefeitura de Cruzeiro do Sul",data:"2026-08-10",fonte:"PCI Concursos",esfera:"municipal",area:"prefeituras",status:"aberto",vagas:"30",origem:"mock"},
-  {titulo:"TCE-AC: 15 vagas - Inscrições encerrando",url:"#",orgao:"TCE-AC",data:"2026-07-15",fonte:"Estratégia",esfera:"estadual",area:"fiscal",status:"encerrando",vagas:"15",origem:"mock"},
-  {titulo:"Caixa Econômica: 2.000 vagas - Edital em breve",url:"#",orgao:"Caixa Econômica Federal",data:"2026-08-05",fonte:"Gran Cursos",esfera:"federal",area:"bancaria",status:"em-breve",vagas:"2.000",origem:"mock"},
-  {titulo:"Polícia Civil-AC: 100 vagas - Autorizado",url:"#",orgao:"Polícia Civil-AC",data:"2026-07-28",fonte:"Diário Oficial",esfera:"estadual",area:"policial",status:"sinal",vagas:"100",origem:"mock"},
-  {titulo:"IBGE: 500 vagas temporárias - Edital publicado",url:"#",orgao:"IBGE",data:"2026-08-12",fonte:"PCI Concursos",esfera:"federal",area:"agencias",status:"aberto",vagas:"500",origem:"mock"},
-  {titulo:"Câmara de Rio Branco: 15 vagas - Concurso autorizado",url:"#",orgao:"Câmara Municipal de Rio Branco",data:"2026-07-05",fonte:"Ache Concursos",esfera:"municipal",area:"legislativo",status:"sinal",vagas:"15",origem:"mock"}
+  {titulo:"PM-RO: 200 vagas - Banca definida (FGV)",url:"#",orgao:"PM-RO",data:"2026-07-25",fonte:"Ache Concursos",esfera:"estadual",area:"policial",status:"em-breve",vagas:"200",origem:"mock"}
 ];
 
 var Search = {
-  API: (location.hostname === 'localhost' || location.hostname === '127.0.0.1') ? 'http://localhost:5000' : 'https://sintoniza-api.onrender.com', // Backend disponível apenas em desenvolvimento
+  API: (location.hostname === 'localhost' || location.hostname === '127.0.0.1') ? 'http://localhost:5000' : '', // Backend disponível apenas em desenvolvimento
   MODE: localStorage.getItem(CONFIG.LS_KEYS.mode) || 'auto',
 
   
@@ -796,18 +789,7 @@ var Settings = {
   }
 };
 
-var MOCK_DATA = [
-  {titulo:"PF: 1.500 vagas Agente - Edital 2026",url:"https://www.gov.br/pf",fonte:"PF",data:"2026-07-28",origem:"rss"},
-  {titulo:"INSS: 1.000 vagas Técnico do Seguro Social",url:"https://www.inss.gov.br",fonte:"INSS",data:"2026-07-27",origem:"rss"},
-  {titulo:"Pref Rio Branco-AC: 200 vagas Guarda Municipal",url:"#",fonte:"Pref AC",data:"2026-07-27",origem:"rss"},
-  {titulo:"PM-RO: 600 vagas Soldado - Edital publicado",url:"#",fonte:"PM-RO",data:"2026-07-26",origem:"rss"},
-  {titulo:"Receita Federal: 230 vagas Auditor Fiscal",url:"#",fonte:"RFB",data:"2026-07-26",origem:"rss"},
-  {titulo:"PC-AM: 50 vagas Delegado de Polícia",url:"#",fonte:"PC-AM",data:"2026-07-25",origem:"rss"},
-  {titulo:"BB: 2.000 vagas Escriturário",url:"#",fonte:"BB",data:"2026-07-25",origem:"rss"},
-  {titulo:"CGU: 60 vagas Auditor Federal autorizadas",url:"#",fonte:"CGU",data:"2026-07-24",origem:"rss"},
-  {titulo:"TJ-AC: 30 vagas Técnico Judiciário",url:"#",fonte:"TJ-AC",data:"2026-07-23",origem:"rss"},
-  {titulo:"Manaus-AM: 150 vagas Saúde",url:"#",fonte:"Manaus",data:"2026-07-22",origem:"rss"}
-];
+
 
 var State = {
   P: { esferas: [], regioes: [], areas: [], customs: [] },
