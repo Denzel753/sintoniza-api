@@ -411,6 +411,10 @@ def trigger_scan():
         return jsonify({"ok": False, "error": str(e)}), 500
 
 
+@app.route('/api/ping')
+def ping():
+    return jsonify({'ping':'pong','routes':[r.rule for r in app.url_map.iter_rules()]})
+
 @app.route('/api/buscar')
 def buscar_web():
     """Busca concursos na web + mescla com dados locais"""
