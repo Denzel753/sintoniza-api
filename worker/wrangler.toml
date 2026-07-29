@@ -1,0 +1,15 @@
+name = "sintoniza-push"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "KV_ID_PLACEHOLDER"
+
+[vars]
+VAPID_PUBLIC_KEY = "BDIkXnqYPI5UBKu_tD5s6lzeEtO3algqYPT8-BaWekiIjljY0ObLzJmL8HKOxdYEAvxKTYo3VPHL8FJjp4dKd3Y"
+VAPID_PRIVATE_KEY = "SeEzaqRbnVYzlJaAIjrLSPL071tp0vl1Hu3lUlRnVr4"
+RENDER_API = "https://sintoniza-api.onrender.com"
+
+[triggers]
+crons = ["*/30 * * * *"]
