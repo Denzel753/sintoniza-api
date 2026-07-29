@@ -443,40 +443,37 @@ def buscar_web():
     resultados = []
     try:
         from duckduckgo_search import DDGS
-        # Try new API (v5+): DDGS instance, .text() returns generator
         ddgs = DDGS()
-        for r in ddgs.text(q, max_results=8, region='br-pt'):
+        for r in ddgs.text(q, max_results=5, region='br-pt'):
             resultados.append({
                 'titulo': r.get('title', ''),
                 'url': r.get('href', ''),
                 'fonte': 'Web Search',
                 'data': r.get('date', ''),
-                    'descricao': r.get('body', '')[:200],
-                    'origem': 'web'
-                })
+                'descricao': r.get('body', '')[:200],
+                'origem': 'web'
+            })
     except Exception as e:
-        print(f"Web search error: {e}")
+        app.logger.warning(f"DuckDuckGo search failed: {e}")
 
     # Mescla com dados locais do blogwatcher
     db = get_db()
     if db:
         cur = db.cursor()
-    search_term = f"%{query or esfera or regiao or area}%"
-    cur.execute("""
-        SELECT a.*, b.name as blog_name FROM articles a
-        JOIN blogs b ON a.blog_id = b.id
-        WHERE a.title LIKE ? OR a.categories LIKE ?
-        ORDER BY a.published_date DESC LIMIT 10
-    """, [search_term, search_term])
+        search_term = f"%{query or esfera or regiao or area}%"
+        cur.execute("""
+            SELECT a.*, b.name as blog_name FROM articles a
+            JOIN blogs b ON a.blog_id = b.id
+            WHERE a.title LIKE ? OR a.categories LIKE ?
+            ORDER BY a.published_date DESC LIMIT 10
+        """, [search_term, search_term])
 
-    for row in cur.fetchall():
-        item = process_article(row)
-        item['origem'] = 'rss'
-        # Evita duplicados por URL
-        if not any(r.get('url') == item['url'] for r in resultados):
-            resultados.append(item)
-
-    db.close()
+        for row in cur.fetchall():
+            item = process_article(row)
+            item['origem'] = 'rss'
+            if not any(r.get('url') == item['url'] for r in resultados):
+                resultados.append(item)
+        db.close()
 
     return jsonify({
         'query': q,
