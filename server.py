@@ -419,7 +419,6 @@ def ping():
 @app.route('/api/buscar')
 def buscar_web():
     """Busca concursos na web + mescla com dados locais"""
-    from duckduckgo_search import DDGS
     esfera = request.args.get('esfera', '')
     regiao = request.args.get('regiao', '')
     area = request.args.get('area', '')
@@ -443,13 +442,15 @@ def buscar_web():
 
     resultados = []
     try:
-        with DDGS() as ddgs:
-            for r in ddgs.text(q, max_results=8, region='br-pt'):
-                resultados.append({
-                    'titulo': r.get('title', ''),
-                    'url': r.get('href', ''),
-                    'fonte': 'Web Search',
-                    'data': r.get('date', ''),
+        from duckduckgo_search import DDGS
+        # Try new API (v5+): DDGS instance, .text() returns generator
+        ddgs = DDGS()
+        for r in ddgs.text(q, max_results=8, region='br-pt'):
+            resultados.append({
+                'titulo': r.get('title', ''),
+                'url': r.get('href', ''),
+                'fonte': 'Web Search',
+                'data': r.get('date', ''),
                     'descricao': r.get('body', '')[:200],
                     'origem': 'web'
                 })
