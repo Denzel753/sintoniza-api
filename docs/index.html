@@ -494,7 +494,10 @@ var Search = {
       tryFetch(proxy1, 6000).then(function(xml) { processXML(xml); }).catch(function() {
         Logger.warn('Proxy 1 falhou, tentando fallback');
         return tryFetch(proxy2, 6000).then(function(xml) { processXML(xml); }).catch(function(e) {
-          Logger.error('Todos os proxies falharam', e.message);
+          var proxy3 = CONFIG.PROXIES[2] + encodeURIComponent(url);
+          return tryFetch(proxy3, 6000).then(function(xml) { processXML(xml); }).catch(function(e) {
+            Logger.error('Todos os 3 proxies falharam', e.message);
+          });
         });
       }).finally(function() { done++; if(done===qs.length) Search._finish(all, cb); });
 
