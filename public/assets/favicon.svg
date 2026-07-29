@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1a1e3a"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#bg)" stroke="#38bdf8" stroke-width="2"/>
+  <!-- Antenna -->
+  <circle cx="50" cy="50" r="14" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+  <line x1="50" y1="36" x2="50" y2="30" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="50" cy="28" r="4" fill="#38bdf8"/>
+  <!-- Waves -->
+  <path d="M28 50 Q35 42 40 50" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round">
+    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+  </path>
+  <path d="M20 50 Q30 38 38 50" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;0.1;0.6" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+  </path>
+  <path d="M62 50 Q70 42 78 50" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round">
+    <animate attributeName="opacity" values="1;0.3;1" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+  </path>
+  <text x="50" y="70" text-anchor="middle" font-size="8" fill="#94a3b8" font-family="system-ui,sans-serif" font-weight="700">CONCURSOS</text>
+</svg>

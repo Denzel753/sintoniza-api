@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src https://cdnjs.cloudflare.com; connect-src *; img-src * data:;">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<meta name="theme-color" content="#0f172a">
+<meta name="description" content="Sintoniza Concursos — Monitore editais e concursos públicos em tempo real">
+<title>Sintoniza Concursos</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>:root{--bg:#0f172a;--card:#1e293b;--border:#334155;--text:#e2e8f0;--muted:#94a3b8;--primary:#38bdf8;--success:#34d399;--warning:#fbbf24;--danger:#f87171;--accent:#a78bfa;--radius:12px;--font:system-ui,sans-serif}*{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased}.splash{position:fixed;inset:0;background:linear-gradient(180deg,#0f172a,#1a1e3a);z-index:2000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;transition:opacity .5s,visibility .5s}.splash.hide{opacity:0;visibility:hidden}.splash i{font-size:48px;color:var(--primary);animation:sp 1.5s infinite}.splash h1{font-size:24px;font-weight:800}.splash h1 span{color:var(--primary)}.splash .waves{display:flex;gap:3px;margin-top:6px}.splash .waves span{width:4px;height:14px;background:var(--primary);border-radius:2px;animation:wv .8s infinite}.splash .waves span:nth-child(1){animation-delay:0s}.splash .waves span:nth-child(2){animation-delay:.1s}.splash .waves span:nth-child(3){animation-delay:.2s}.splash .waves span:nth-child(4){animation-delay:.3s}.splash .waves span:nth-child(5){animation-delay:.4s}@keyframes sp{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.08);opacity:.8}}@keyframes wv{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.3)}}.onboarding{position:fixed;inset:0;background:var(--bg);z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;gap:12px;overflow-y:auto}.onboarding h1{font-size:19px;font-weight:800}.onboarding h1 span{color:var(--primary)}.onboarding .sub{font-size:10px;color:var(--muted)}.pbox{width:100%;max-width:380px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:11px}.pbox h3{font-size:10px;font-weight:700;margin-bottom:7px;display:flex;align-items:center;gap:5px}.pbox h3 i{color:var(--primary);font-size:11px}.chip-row{display:flex;flex-wrap:wrap;gap:4px}.chip{padding:6px 10px;border-radius:13px;border:1.5px solid var(--border);background:transparent;color:var(--muted);font-size:9px;font-weight:600;cursor:pointer;font-family:var(--font);transition:all .15s}.chip:hover{border-color:var(--primary);color:var(--text)}.chip.on{background:var(--primary);color:#0f172a;border-color:var(--primary)}.chip.sm{padding:5px 7px;font-size:8px;border-radius:10px}.btn-start{width:100%;max-width:380px;padding:12px;border-radius:var(--radius);border:none;background:var(--primary);color:#0f172a;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font)}.custom-row{margin-top:6px}.custom-row .tags{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:6px}.custom-row .tags span{padding:2px 7px;border-radius:9px;font-size:8px;font-weight:600;background:rgba(56,189,248,.12);color:var(--primary);display:flex;align-items:center;gap:3px}.custom-row .tags span b{color:var(--danger);cursor:pointer;font-weight:700;font-size:10px}.custom-row input{width:100%;padding:7px;background:transparent;border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-size:11px;font-family:var(--font)}.custom-row input:focus{outline:none;border-color:var(--primary)}.custom-row input::placeholder{color:var(--muted);font-size:9px}.app{max-width:500px;margin:0 auto;min-height:100vh;display:none;padding-bottom:20px}.hdr{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border)}.hdr-l{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:700}.dot{width:6px;height:6px;border-radius:50%}.dot.on{background:var(--success)}.dot.off{background:var(--warning)}.dot.busy{background:var(--primary);animation:pk 1s infinite}@keyframes pk{0%,100%{opacity:1}50%{opacity:.3}}.hdr-r{display:flex;gap:4px}.ibtn{background:var(--card);border:1px solid var(--border);color:var(--text);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center}.tabs{display:flex;border-bottom:1px solid var(--border);position:sticky;top:44px;z-index:99;background:var(--bg)}.tab{flex:1;padding:8px 4px 7px;background:none;border:none;color:var(--muted);font-size:9px;font-weight:600;cursor:pointer;font-family:var(--font);text-align:center;border-bottom:2px solid transparent;display:flex;flex-direction:column;align-items:center;gap:2px}.tab i{font-size:12px}.tab.on{color:var(--primary);border-bottom-color:var(--primary)}.ctn{padding:9px}.tbc{display:none;animation:fi .3s}.tbc.on{display:block}@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}.rp{display:flex;align-items:center;gap:9px;padding:9px;background:var(--card);border-radius:var(--radius);margin-bottom:9px;border:1px solid var(--border)}.rp i{font-size:24px;color:var(--primary)}.rp .info .t{font-weight:700;font-size:11px}.rp .info .s{font-size:8px;color:var(--muted)}.rp .cnt{font-size:20px;font-weight:800;color:var(--primary);margin-left:auto}.sc{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:9px}.scard{padding:7px;background:var(--card);border-radius:var(--radius);border:1px solid var(--border);display:flex;align-items:center;gap:6px}.scard .si{width:24px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:9px}.scard .v{font-size:13px;font-weight:800}.scard .l{font-size:7px;color:var(--muted)}.cg .si{background:rgba(52,211,153,.15);color:var(--success)}.cg .v{color:var(--success)}.co .si{background:rgba(251,191,36,.15);color:var(--warning)}.co .v{color:var(--warning)}.cb .si{background:rgba(56,189,248,.15);color:var(--primary)}.cb .v{color:var(--primary)}.cp .si{background:rgba(167,139,250,.15);color:var(--accent)}.cp .v{color:var(--accent)}.cs .si{background:rgba(148,163,184,.15);color:var(--muted)}.cs .v{color:var(--muted)}.stitle{font-size:10px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:5px}.stitle i{color:var(--primary)}.slist{display:flex;flex-direction:column;gap:4px}.scard2{padding:8px;background:var(--card);border-radius:var(--radius);border:1px solid var(--border)}.scard2.urg{border-color:var(--danger)}.scard2 .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2px}.scard2 .org{font-weight:700;font-size:10px}.scard2 .inf{font-size:9px;color:var(--muted);margin-bottom:3px}.tags2{display:flex;flex-wrap:wrap;gap:2px;margin-bottom:3px}.tag{padding:1px 4px;border-radius:4px;font-size:7px;font-weight:700}.tf{background:rgba(56,189,248,.15);color:var(--primary)}.te{background:rgba(251,191,36,.15);color:var(--warning)}.tm{background:rgba(167,139,250,.15);color:var(--accent)}.ta{background:rgba(52,211,153,.15);color:var(--success)}.tx{background:rgba(248,113,113,.15);color:var(--danger)}.tb{background:rgba(56,189,248,.15);color:var(--primary)}.scard2 .bot{display:flex;justify-content:space-between;align-items:center;font-size:8px;color:var(--muted)}.scard2 .lk{color:var(--primary);text-decoration:none;font-weight:600;font-size:8px}.fv{background:none;border:none;color:var(--muted);cursor:pointer;font-size:11px;padding:1px}.fv.on,.fv:hover{color:#fbbf24}.lbar{height:2px;background:var(--primary);border-radius:1px;margin-bottom:7px;opacity:0;transition:opacity .3s}.lbar.on{opacity:1;animation:ld 1.5s infinite}@keyframes ld{0%{width:0}50%{width:70%}100%{width:100%}}.empty{padding:25px;text-align:center;color:var(--muted)}.empty i{font-size:24px;margin-bottom:5px;display:block}.empty p{font-size:9px}.toast{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:var(--primary);color:#0f172a;padding:7px 12px;border-radius:12px;font-size:10px;font-weight:600;z-index:600;white-space:nowrap;display:none}.smini{margin-bottom:7px;position:relative}.smini input{width:100%;padding:6px 9px 6px 26px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-size:10px;font-family:var(--font)}.smini input:focus{outline:none;border-color:var(--primary)}.smini i{position:absolute;left:7px;top:7px;color:var(--muted);font-size:9px}.cbox{margin-bottom:11px}.cbox h3{font-size:10px;margin-bottom:5px}.install-banner{display:none;padding:8px 12px;background:var(--card);border:1px solid var(--primary);border-radius:var(--radius);margin-bottom:9px;font-size:9px;align-items:center;gap:8px}.install-banner.show{display:flex}.install-banner button{padding:4px 10px;border-radius:8px;border:none;background:var(--primary);color:#0f172a;font-size:9px;font-weight:700;cursor:pointer;font-family:var(--font);white-space:nowrap}body.light{--bg:#f8fafc;--card:#fff;--border:#e2e8f0;--text:#1e293b;--muted:#64748b}body.light .splash{background:linear-gradient(180deg,#f8fafc,#e0f2fe)}body.light .onboarding{background:var(--bg)}.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;opacity:0;visibility:hidden;transition:all .3s}.drawer-overlay.open{opacity:1;visibility:visible}.drawer{position:fixed;top:0;right:0;width:85%;max-width:360px;height:100vh;background:var(--bg);z-index:501;transform:translateX(100%);transition:transform .3s;overflow-y:auto;box-shadow:-4px 0 20px rgba(0,0,0,.3)}.drawer.open{transform:translateX(0)}.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:2}.drawer-head h3{font-size:15px;font-weight:700}.drawer-head button{background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer}.drawer-body{padding:14px 16px}.drawer-section{margin-bottom:18px}.drawer-section h4{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;display:flex;align-items:center;gap:6px}.drawer-section h4 i{color:var(--primary)}.drawer-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)}.drawer-row:last-child{border-bottom:none}.drawer-row span{font-size:12px;font-weight:500}.toggle-sw{appearance:none;width:42px;height:24px;background:var(--border);border-radius:12px;position:relative;cursor:pointer;transition:background .2s}.toggle-sw::after{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;background:#fff;border-radius:50%;transition:transform .2s}.toggle-sw:checked{background:var(--primary)}.toggle-sw:checked::after{transform:translateX(18px)}.drawer-select{padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:11px;font-family:var(--font)}.drawer-btn{padding:8px 12px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:10px;font-weight:600;cursor:pointer;font-family:var(--font);display:flex;align-items:center;gap:5px;width:100%;margin-bottom:6px}.drawer-btn.danger{color:var(--danger);border-color:var(--danger)}.drawer-divider{height:1px;background:var(--border);margin:14px 0}.drawer-about{font-size:10px;color:var(--muted);line-height:1.6}.drawer-about b{color:var(--text)}.drawer-about a{color:var(--primary);text-decoration:none}.drawer-links{display:flex;gap:10px;margin-top:8px}.drawer-links a{color:var(--muted);font-size:16px;transition:color .2s}.drawer-links a:hover{color:var(--primary)}.sync-dot{display:none;width:5px;height:5px;background:var(--primary);border-radius:50%;margin-left:4px;animation:pulse 2s infinite}.sync-dot.active{display:inline-block}.pull-indicator{text-align:center;padding:0;height:0;overflow:hidden;transition:all .3s;color:var(--muted);font-size:11px}.pull-indicator.show{height:32px;padding:6px}.skeleton{background:linear-gradient(90deg,var(--card) 25%,var(--border) 50%,var(--card) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:6px}.skeleton-line{height:10px;margin-bottom:6px}.skeleton-line.short{width:60%}.skeleton-card{padding:12px;background:var(--card);border-radius:var(--radius);border:1px solid var(--border);margin-bottom:6px}@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}.unread-dot{width:7px;height:7px;background:var(--primary);border-radius:50%;margin-right:4px;flex-shrink:0}.scard2.read{opacity:.7}.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}.stat-card{padding:8px;background:var(--card);border-radius:8px;border:1px solid var(--border)}.stat-card .sa{font-size:9px;color:var(--muted)}.stat-card .sv{font-size:18px;font-weight:800}.stat-card .sb{width:100%;height:3px;background:var(--border);border-radius:2px;margin-top:4px}.stat-card .sb-fill{height:100%;border-radius:2px}.stats-list{display:flex;flex-direction:column;gap:4px}.stats-row{display:flex;align-items:center;gap:8px;font-size:10px;padding:4px 0}.stats-row .sr-bar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}.stats-row .sr-fill{height:100%;border-radius:3px;background:var(--primary)}</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div class="splash" id="splash">
+  <i class="fas fa-satellite-dish"></i>
+  <h1><span>Sintoniza</span> Concursos</h1>
+  <div class="waves"><span></span><span></span><span></span><span></span><span></span></div>
+</div>
+
+<!-- ONBOARDING -->
+<div id="onboarding" class="onboarding" style="display:none">
+  <h1>Escolha seus <span>canais</span></h1>
+  <p class="sub">Escolha suas preferências abaixo</p>
+
+  <div class="pbox">
+    <h3><i class="fas fa-broadcast-tower"></i> ESFERAS</h3>
+    <div class="chip-row" id="onbE">
+      <button class="chip" data-v="federal" onclick="this.classList.toggle('on')">Federal</button>
+      <button class="chip" data-v="estadual" onclick="this.classList.toggle('on')">Estadual</button>
+      <button class="chip" data-v="municipal" onclick="this.classList.toggle('on')">Municipal</button>
+    </div>
+  </div>
+
+  <div class="pbox">
+    <h3><i class="fas fa-map-marker-alt"></i> REGIÕES</h3>
+    <div class="chip-row" id="onbR"></div>
+  </div>
+
+  <div class="pbox">
+    <h3><i class="fas fa-briefcase"></i> CARREIRAS</h3>
+    <div class="chip-row" id="onbA"></div>
+  </div>
+
+  <div class="pbox">
+    <h3><i class="fas fa-pencil"></i> INTERESSES ESPECÍFICOS</h3>
+    <p class="sub" style="margin-bottom:6px">Ex: IBGE, TCE, Detran...</p>
+    <div class="custom-row">
+      <div class="tags" id="onbT"></div>
+      <div class="input-row">
+        <input type="text" id="onbI" placeholder="Ex: IBGE, TCE, ANVISA...">
+        <button class="add-btn" onclick="App.addCustomOnb()" title="Adicionar"><i class="fas fa-plus"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-start" onclick="App.start()"><i class="fas fa-play"></i> INICIAR</button>
+  <p style="font-size:9px;color:var(--muted)">Se nada for selecionado, busca tudo.</p>
+</div>
+
+<!-- APP -->
+<div id="app" class="app">
+  <div class="install-banner" id="installBn">
+    <i class="fas fa-mobile-alt"></i> Instale o app
+    <button onclick="PWA.install()">Instalar</button>
+  </div>
+
+  <header class="hdr">
+    <div class="hdr-l">
+      <div class="dot on" id="sd"></div>
+      Sintoniza
+      <span class="stl on" id="stl">online</span><span class="sync-dot" id="syncDot" title="Busca automática ativa"></span>
+    </div>
+    <div class="hdr-r">
+      <button class="ibtn" id="br" title="Atualizar"><i class="fas fa-sync-alt"></i></button>
+            <button class="ibtn" id="bcfg" title="Configurações"><i class="fas fa-cog"></i></button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab on" data-tab="radar"><i class="fas fa-satellite-dish"></i>Sinais</button>
+    <button class="tab" data-tab="fav"><i class="fas fa-star"></i>Favoritos</button>
+    <button class="tab" data-tab="estatisticas"><i class="fas fa-chart-bar"></i>Stats</button>
+<button class="tab" data-tab="canais"><i class="fas fa-broadcast-tower"></i>Canais</button>
+  </nav>
+
+  <main class="ctn">
+    <!-- RADAR -->
+    <section class="tbc on" id="tb-radar">
+      <div class="pull-indicator" id="pullInd"><i class="fas fa-sync-alt fa-spin"></i> Solte para atualizar</div>
+      <div class="lbar" id="lb"></div>
+      <div class="rp">
+        <i class="fas fa-satellite-dish"></i>
+        <div class="info"><div class="t">Sinais Ativos</div><div class="s" id="rs">Pronto</div></div>
+        <div class="cnt" id="sc">0</div>
+      </div>
+      <div class="sc" id="scards"></div>
+      <div style="font-size:8px;color:var(--muted);margin-top:2px;text-align:center;cursor:pointer" onclick="StatusHelp.show()"><i class="fas fa-question-circle"></i> O que significam os status?</div>
+<div style="display:flex;gap:6px;margin-bottom:8px">
+      <select id="sortBy" onchange="App.setSort()" style="flex:1;padding:5px 8px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:9px;font-family:var(--font)">
+        <option value="status">Ordenar: Status</option>
+        <option value="recent">Ordenar: Mais recentes</option>
+        <option value="vagas">Ordenar: Mais vagas</option>
+      </select>
+    </div>
+      <div class="smini">
+        <i class="fas fa-search"></i>
+        <input type="text" id="sr" placeholder="Filtrar nos resultados...">
+      </div>
+      <div class="stitle">
+        <i class="fas fa-rss"></i> Sinais
+        <span style="font-size:8px;color:var(--muted)" id="scl"></span>
+        <span id="oi" style="margin-left:auto;font-size:7px;color:var(--muted)"></span>
+      </div>
+      <div class="slist" id="sl"></div>
+      <div class="empty" id="eR" style="display:none">
+        <div style="font-size:56px;margin-bottom:12px;opacity:.3">🛰️</div>
+        <p style="font-size:14px;font-weight:600;margin-bottom:4px">Nenhum sinal encontrado</p>
+        <p style="font-size:11px;color:var(--muted);max-width:250px">Ajuste seus canais ou tente buscar novamente.</p>
+        <button onclick="Search.buscar()" style="margin-top:12px;padding:8px 16px;border-radius:8px;border:1px solid var(--primary);background:transparent;color:var(--primary);font-size:11px;font-weight:600;cursor:pointer;font-family:var(--font)"><i class="fas fa-sync-alt"></i> Tentar novamente</button>
+      </div>
+    </section>
+
+    <!-- FAVORITOS -->
+    <section class="tbc" id="tb-fav">
+      <div class="slist" id="fl"></div>
+      <div class="empty" id="eF"><i class="fas fa-star"></i><p>⭐ nos sinais.</p></div>
+    </section>
+
+    <section class="tbc" id="tb-estatisticas"><div class="sec-title"><i class="fas fa-chart-pie"></i> Estatisticas</div><div class="stats-grid" id="statsArea"></div><div class="sec-title" style="margin-top:14px"><i class="fas fa-building"></i> Top orgaos</div><div class="stats-list" id="statsOrgaos"></div></section>
+<!-- CANAIS -->
+    <section class="tbc" id="tb-canais">
+      <p style="font-size:9px;color:var(--muted);margin-bottom:9px">
+        Ao sair, busca <b style="color:var(--primary)">automática</b>.
+      </p>
+      <div class="cbox"><h3>ESFERAS</h3><div class="chip-row" id="cE"></div></div>
+      <div class="cbox"><h3>REGIÕES</h3><div class="chip-row" id="cR"></div></div>
+      <div class="cbox"><h3>CARREIRAS</h3><div class="chip-row" id="cA"></div></div>
+      <div class="cbox">
+        <h3>INTERESSES ESPECÍFICOS</h3>
+        <div class="custom-row">
+          <div class="tags" id="cT"></div>
+          <div class="input-row">
+            <input type="text" id="cI" placeholder="Ex: IBGE, TCE, ANVISA...">
+            <button class="add-btn" onclick="App.addCustomCanal()" title="Adicionar"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+      <button class="btn-start" onclick="App.irRadar()" style="max-width:100%">
+        <i class="fas fa-sync-alt"></i> ATUALIZAR SINAIS
+      </button>
+    </section>
+  </main>
+</div>
+
+<!-- DRAWER DE CONFIGURAÇÕES -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="Settings.close()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h3>Configurações</h3>
+    <button onclick="Settings.close()">&times;</button>
+  </div>
+  <div class="drawer-body">
+    <div class="drawer-section">
+      <h4><i class="fas fa-palette"></i> Aparência</h4>
+      <div class="drawer-row">
+        <span>Modo escuro</span>
+        <input type="checkbox" class="toggle-sw" id="cfgDark" checked onchange="Settings.toggleDark()">
+      </div>
+      <div class="drawer-row">
+        <span>Animação do radar</span>
+        <input type="checkbox" class="toggle-sw" id="cfgAnim" checked onchange="Settings.toggleAnim()">
+      </div>
+    </div>
+    <div class="drawer-section">
+      <h4><i class="fas fa-search"></i> Comportamento</h4>
+      <div class="drawer-row">
+        <span>Modo de busca</span>
+        <select class="drawer-select" id="cfgMode" onchange="Settings.setMode()">
+          <option value="auto">Automático</option>
+          <option value="backend">Backend (Dev)</option>
+          <option value="offline">Offline (Demo)</option>
+        </select>
+      </div>
+      <div class="drawer-row">
+        <span>Busca automática</span>
+        <input type="checkbox" class="toggle-sw" id="cfgAutoSync" onchange="Settings.toggleAutoSync()">
+      </div>
+      <div class="drawer-row" id="syncIntervalRow" style="display:none">
+        <span>A cada</span>
+        <select class="drawer-select" id="cfgSyncInterval" onchange="Settings.setSyncInterval()">
+          <option value="15">15 minutos</option>
+          <option value="30" selected>30 minutos</option>
+          <option value="60">60 minutos</option>
+        </select>
+      </div>
+    </div>
+    <div class="drawer-section">
+      <h4><i class="fas fa-database"></i> Dados</h4>
+      <button class="drawer-btn" onclick="Settings.exportData()"><i class="fas fa-download"></i> Exportar preferências</button>
+      <button class="drawer-btn" onclick="Settings.importData()"><i class="fas fa-upload"></i> Importar preferências</button>
+      <input type="file" id="importFile" accept=".json" style="display:none" onchange="Settings.handleImport(event)">
+      <button class="drawer-btn danger" onclick="Settings.clearAll()"><i class="fas fa-trash"></i> Limpar todos os dados</button>
+    </div>
+    
+    <div class="drawer-section">
+      <h4><i class="fas fa-stethoscope"></i> Diagnóstico</h4>
+      <div id="diagInfo" style="font-size:9px;color:var(--muted);margin-bottom:6px"></div>
+      <button class="drawer-btn" onclick="Logger.exportLogs()"><i class="fas fa-download"></i> Exportar log de erros</button>
+      <button class="drawer-btn" onclick="Logger.clearLogs()"><i class="fas fa-eraser"></i> Limpar logs</button>
+    </div>
+
+    <div class="drawer-divider"></div>
+
+    <div class="drawer-section">
+      <h4><i class="fas fa-shield-haltered"></i> Privacidade</h4>
+      <div class="drawer-about" style="font-size:9px;line-height:1.5">
+        <b>Sintoniza Concursos</b> não coleta, armazena ou compartilha dados pessoais.<br><br>
+        Todas as suas preferências, favoritos e configurações ficam salvos <b>apenas no seu navegador</b> (localStorage).<br><br>
+        Nenhuma informação é enviada a servidores externos. As buscas são feitas diretamente em fontes públicas (Google News, feeds RSS).<br><br>
+        Ao limpar os dados do navegador, todas as informações do app serão perdidas. Use a opção <b>Exportar</b> para fazer backup.<br><br>
+        <b>Desenvolvedor:</b> Victor Jucá<br>
+        <b>Contato:</b> saraivaejuca@gmail.com<br>
+        <b>Licença:</b> MIT — Código aberto<br><br>
+        <i>Última atualização: Julho 2026</i>
+      </div>
+    </div>
+
+    <div class="drawer-divider"></div>
+    <div class="drawer-section">
+      <h4><i class="fas fa-info-circle"></i> Sobre</h4>
+      <div class="drawer-about">
+        <b>Sintoniza Concursos</b> v1.0<br>
+        Ferramenta independente para monitoramento de concursos públicos no Brasil.<br><br>
+        <b>Desenvolvido por Victor</b><br>
+        Seus dados ficam salvos apenas no seu navegador.<br><br>
+        <b>MIT License</b> &middot; <a href="privacidade.html" target="_blank" style="color:var(--primary)">Política de Privacidade</a>
+        <div class="drawer-links">
+          <a href="mailto:saraivaejuca@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://github.com" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<!-- SCRIPTS (ordem importa!) -->
+<script>
+var FEED_DATA = [{titulo:"PF: 1.500 vagas",url:"#",fonte:"PF",date:"2026-07-28",origem:"rss"}];
+
+var Classifier = {
+  AREA_TERMS: {
+    policial: ['polícia civil','polícia militar','guarda municipal','bombeiro militar','agente de polícia','delegado','investigador','perito criminal','polícia penal','prf','polícia federal','escrivão'],
+    fiscal: ['auditor fiscal','receita federal','receita estadual','sefaz','tributário','fiscal de rendas','analista tributário'],
+    tribunais: ['tribunal','trf','trt','tre','tj','tcu','tce','tse','juiz','desembargador','analista judiciário','técnico judiciário','oficial de justiça'],
+    administrativa: ['administrativo','técnico administrativo','analista administrativo','assistente administrativo','agente administrativo'],
+    bancaria: ['banco do brasil','caixa econômica','escriturário','técnico bancário','bancário','concurso bb','concurso caixa'],
+    educacao: ['professor','educador','pedagogo','ensino','escolar','magistério','docente','universidade','instituto federal'],
+    saude: ['enfermeiro','médico','técnico enfermagem','agente de saúde','saúde','hospital','farmacêutico','fisioterapeuta','psicólogo','agente comunitário'],
+    prefeituras: ['prefeitura','municipal','câmara municipal','guarda municipal','agente municipal','concurso prefeitura','prefeito'],
+    legislativo: ['câmara dos deputados','senado federal','assembleia legislativa','câmara municipal','técnico legislativo','consultor legislativo','deputado'],
+    agencias: ['anvisa','ans','aneel','antt','anatel','ancine','agência reguladora','agência nacional','ibge','inmetro','cvm','bacen']
+  },
+
+  AREA_LABELS: {
+    policial:'Policial',fiscal:'Fiscal',tribunais:'Tribunais',administrativa:'Administrativa',
+    bancaria:'Bancária',educacao:'Educação',saude:'Saúde',prefeituras:'Prefeituras',
+    legislativo:'Legislativo',agencias:'Agências Reg.'
+  },
+  REG_LABELS: {
+    nacional:'Nacional',acre:'AC',alagoas:'AL',amapa:'AP',amazonas:'AM',bahia:'BA',
+    ceara:'CE',df:'DF',espirito_santo:'ES',goias:'GO',maranhao:'MA',mato_grosso:'MT',
+    mato_grosso_sul:'MS',minas_gerais:'MG',para:'PA',paraiba:'PB',parana:'PR',
+    pernambuco:'PE',piaui:'PI',rio_janeiro:'RJ',rio_grande_norte:'RN',
+    rio_grande_sul:'RS',rondonia:'RO',roraima:'RR',santa_catarina:'SC',
+    sao_paulo:'SP',sergipe:'SE',tocantins:'TO'
+  },
+  REG_QUERY: {
+    acre:'Acre',alagoas:'Alagoas',amapa:'Amapá',amazonas:'Amazonas',bahia:'Bahia',
+    ceara:'Ceará',df:'Distrito Federal',espirito_santo:'Espírito Santo',goias:'Goiás',
+    maranhao:'Maranhão',mato_grosso:'Mato Grosso',mato_grosso_sul:'Mato Grosso do Sul',
+    minas_gerais:'Minas Gerais',para:'Pará',paraiba:'Paraíba',parana:'Paraná',
+    pernambuco:'Pernambuco',piaui:'Piauí',rio_janeiro:'Rio de Janeiro',
+    rio_grande_norte:'Rio Grande do Norte',rio_grande_sul:'Rio Grande do Sul',
+    rondonia:'Rondônia',roraima:'Roraima',santa_catarina:'Santa Catarina',
+    sao_paulo:'São Paulo',sergipe:'Sergipe',tocantins:'Tocantins'
+  },
+  REG_PATTERNS: {
+    acre:/\bacre\b|\bac\b|rio branco/i,
+    alagoas:/\balagoas\b|\bal\b|macei[óo]/i,
+    amapa:/\bamap[áa]\b|\bap\b|macap[áa]/i,
+    amazonas:/\bamazonas\b|\bam\b|manaus/i,
+    bahia:/\bbahia\b|\bba\b|salvador/i,
+    ceara:/\bcear[áa]\b|\bce\b|fortaleza/i,
+    df:/\bdistrito federal\b|\bdf\b|bras[íi]lia/i,
+    espirito_santo:/\besp[íi]rito santo\b|\bes\b|vit[óo]ria/i,
+    goias:/\bgoi[áa]s\b|\bgo\b|goi[âa]nia/i,
+    maranhao:/\bmaranh[ãa]o\b|\bma\b|s[ãa]o lu[íi]s/i,
+    mato_grosso:/\bmato grosso\b(?!\s+do\s+sul)|\bmt\b|cuiab[áa]/i,
+    mato_grosso_sul:/\bmato grosso do sul\b|\bms\b|campo grande/i,
+    minas_gerais:/\bminas gerais\b|\bmg\b|belo horizonte/i,
+    para:/\bpar[áa]\b|\bpa\b|bel[ée]m/i,
+    paraiba:/\bpara[íi]ba\b|\bpb\b|jo[ãa]o pessoa/i,
+    parana:/\bparan[áa]\b|\bpr\b|curitiba/i,
+    pernambuco:/\bpernambuco\b|\bpe\b|recife/i,
+    piaui:/\bpiau[íi]\b|\bpi\b|teresina/i,
+    rio_janeiro:/\brio de janeiro\b|\brj\b|niter[óo]i/i,
+    rio_grande_norte:/\brio grande do norte\b|\brn\b|natal/i,
+    rio_grande_sul:/\brio grande do sul\b|\brs\b|porto alegre/i,
+    rondonia:/\brond[ôo]nia\b|\bro\b|porto velho/i,
+    roraima:/\broraima\b|\brr\b|boa vista/i,
+    santa_catarina:/\bsanta catarina\b|\bsc\b|florian[óo]polis/i,
+    sao_paulo:/\bs[ãa]o paulo\b|\bsp\b|campinas/i,
+    sergipe:/\bsergipe\b|\bse\b|aracaju/i,
+    tocantins:/\btocantins\b|\bto\b|palmas/i
+  },
+
+  
+  classify: function(item) {
+    var t = (item.titulo + ' ' + (item.categorias || []).join(' ')).toLowerCase();
+    var federalScore = 0, estadualScore = 0, municipalScore = 0;
+    var federalWords = [
+      {w:/\bfederal\b/,p:3},{w:/\bpf\b/,p:3},{w:/\bprf\b/,p:3},{w:/\binss\b/,p:3},
+      {w:/\breceita federal\b/,p:3},{w:/\btcu\b/,p:2},{w:/\bcgu\b/,p:2},
+      {w:/\bbanco do brasil\b/,p:2},{w:/\bcaixa econ[ôo]mica\b/,p:2},
+      {w:/\btrf\b/,p:2},{w:/\btrt\b/,p:2},{w:/\btst\b/,p:2},{w:/\bminist[ée]rio\b/,p:2},
+      {w:/\bibge\b/,p:2},{w:/\bbacen\b/,p:2},{w:/\bstf\b/,p:2},{w:/\bstj\b/,p:2},
+      {w:/\btse\b/,p:2},{w:/\bmpu\b/,p:2},{w:/\bdpu\b/,p:2}
+    ];
+    var municipalWords = [
+      {w:/\bprefeitura\b/,p:4},{w:/\bmunicipal\b/,p:3},{w:/\bc[âa]mara municipal\b/,p:3},
+      {w:/\bguarda municipal\b/,p:4},{w:/\bprefeito\b/,p:3}
+    ];
+
+    federalWords.forEach(function(k){if(k.w.test(t))federalScore+=k.p;});
+    municipalWords.forEach(function(k){if(k.w.test(t))municipalScore+=k.p;});
+    estadualScore = 1; // default
+
+    var esfera = 'estadual';
+    if (federalScore >= 3) esfera = 'federal';
+    else if (municipalScore >= 3 && municipalScore > federalScore) esfera = 'municipal';
+    else if (municipalScore >= 3 && federalScore < 3) esfera = 'municipal';
+    var status = 'desconhecido';
+    if (/inscri[çc][õo]es abertas?|edital publicado|edital saiu|publicad[oa]/.test(t) &&
+        !/em breve|previsto|autorizado/.test(t)) status = 'aberto';
+    else if (/[úu]ltimos dias|encerram?|termina|prazo final|n[aã]o perca/.test(t)) status = 'encerrando';
+    else if (/em breve|previsto|banca definida|banca contratada|banca escolhida|Cebraspe|FGV|Cesgranrio|organizadora/.test(t)) status = 'em-breve';
+    else if (/autorizado|autorização|solicitou|solicitação|orçamento aprovado|dotação orçamentária|comissão organizadora|grupo de trabalho|comissão formada|extrato de contrato|dispensa de licitação|iminente|tramitação|previsão de edital|planejamento/.test(t)) status = 'sinal';
+    var regiao = 'nacional';
+    for (var k in this.REG_PATTERNS) {
+      if (this.REG_PATTERNS[k].test(t)) { regiao = k; break; }
+    }
+    if (regiao === 'nacional' && /nacional|federal|brasil/i.test(t) && esfera === 'federal') regiao = 'nacional';
+    var vagas = null;
+    var m = item.titulo.match(/(\d+)\s*vagas?/i);
+    if (m) vagas = parseInt(m[1]);
+    var orgao = (item.titulo || '')
+      .replace(/^(Concurso|Edital|Processo Seletivo)\s+/i, '')
+      .split(/\s+\d{4}/)[0]
+      .split(':')[0]
+      .split(' - ')[0]
+      .trim()
+      .substring(0, 50);
+    var area = 'administrativa';
+    for (var a in this.AREA_TERMS) {
+      for (var i = 0; i < this.AREA_TERMS[a].length; i++) {
+        if (t.indexOf(this.AREA_TERMS[a][i]) >= 0) { area = a; break; }
+      }
+      if (area !== 'administrativa') break;
+    }
+
+    return {
+      id: item.url || Math.random(),
+      titulo: item.titulo,
+      orgao: orgao,
+      url: item.url,
+      fonte: item.fonte || 'Web',
+      data: item.data || '',
+      esfera: esfera,
+      status: status,
+      regiao: regiao,
+      area: area,
+      vagas: vagas,
+      favorito: false,
+      origem: item.origem || 'web'
+    };
+  }
+};
+
+var CONFIG = {
+  API: (location.hostname === 'localhost' || location.hostname === '127.0.0.1') ? 'http://localhost:5000' : 'https://sintoniza-api.onrender.com',
+  PROXIES: ['https://api.allorigins.win/raw?url=', 'https://corsproxy.io/?'],
+  TIMEOUT_BACKEND: 3000,
+  TIMEOUT_PROXY: 6000,
+  TIMEOUT_GOOGLE_NEWS: 5000,
+  PAGE_SIZE: 20,
+  SYNC_DEFAULT_INTERVAL: 30, // minutos
+  LS_VERSION: 2,
+  LS_KEYS: { prefs: 'stz2_p', favs: 'stz2_favs', read: 'stz2_read', logs: 'stz2_logs', dark: 'stz2_dark', anim: 'stz2_anim', mode: 'stz2_mode', autosync: 'stz2_autosync', syncinterval: 'stz2_syncinterval', lastUrls: 'stz2_last_urls', has: 'stz2_has', battery: 'stz2_battery' }
+};
+
+var Search = {
+  API: (location.hostname === 'localhost' || location.hostname === '127.0.0.1') ? 'http://localhost:5000' : 'https://sintoniza-api.onrender.com', // Backend disponível apenas em desenvolvimento
+  MODE: localStorage.getItem(CONFIG.LS_KEYS.mode) || 'auto',
+
+  
+  buscar: function(cb) {
+    if (!navigator.onLine && this.MODE !== 'offline') {
+      UI.toast('📡 Sem conexão com a internet');
+      this._offline(cb);
+      return;
+    }
+    if (this.MODE === 'offline') {
+      this._offline(cb);
+      return;
+    }
+    if (this.MODE === 'backend') {
+      if (!this.API) { UI.toast('⚠️ Backend só funciona em desenvolvimento'); this._offline(cb); return; }
+      this._backend(cb);
+      return;
+    }
+    this._backend(function(success) {
+      if (!success) Search._googleNews(cb);
+      else if (cb) cb();
+    });
+  },
+
+  _backend: function(cb) {
+    UI.setStatus('searching');
+    UI.loading(true);
+    UI.showSkeleton();
+    UI.toast('🔍 Buscando (backend)...');
+
+    var qs = this._buildQueries();
+    fetch(this.API + '/api/buscar?q=' + encodeURIComponent(qs[0] || 'concurso'),{signal:AbortSignal.timeout(CONFIG.TIMEOUT_BACKEND)})
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (d.resultados && d.resultados.length > 0) {
+          State.cursos = d.resultados.map(Classifier.classify);
+          State.online = true;
+          UI.setStatus('online');
+          UI.toast('✅ ' + d.resultados.length + ' sinais (backend)');
+          UI.setOrigin('🖥️ Servidor próprio');
+        } else {
+          throw new Error('empty');
+        }
+        UI.loading(false);
+        State.loadFavs();
+        UI.renderAll();
+        if(d&&d.resultados)Notifications.check(d.resultados);
+        if (cb) cb(true);
+      })
+      .catch(function(e) {
+        Logger.warn('Backend offline', e.message || 'connection refused');
+        UI.loading(false);
+        if (cb) cb(false);
+      });
+  },
+
+  _googleNews: function(cb) {
+    UI.setStatus('searching');
+    UI.showSkeleton();
+    UI.toast('🔍 Buscando na web...');
+
+    var qs = this._buildQueries();
+    var all = [], done = 0;
+
+    qs.forEach(function(q) {
+      var url = 'https://news.google.com/rss/search?q=' + encodeURIComponent(q) + '&hl=pt-BR&gl=BR&ceid=BR:pt';
+      var proxy1 = CONFIG.PROXIES[0] + encodeURIComponent(url);
+      var proxy2 = CONFIG.PROXIES[1] + encodeURIComponent(url);
+
+      function tryFetch(proxy, timeout) {
+        return fetch(proxy, { signal: AbortSignal.timeout(timeout) }).then(function(r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.text();
+        });
+      }
+
+      tryFetch(proxy1, 6000).then(function(xml) { processXML(xml); }).catch(function() {
+        Logger.warn('Proxy 1 falhou, tentando fallback');
+        tryFetch(proxy2, 6000).then(function(xml) { processXML(xml); }).catch(function(e) {
+          Logger.error('Todos os proxies falharam', e.message);
+        }).finally(function() { done++; if(done===qs.length) Search._finish(all, cb); });
+      }).finally(function() { done++; if(done===qs.length) Search._finish(all, cb); });
+
+      function processXML(xml) {
+        var items = new DOMParser().parseFromString(xml, 'text/xml').querySelectorAll('item');
+        items.forEach(function(it) {
+          var title = it.querySelector('title')?.textContent || '';
+          var link = it.querySelector('link')?.textContent || '';
+          var pubDate = it.querySelector('pubDate')?.textContent || '';
+          title = title.replace(/\s*-\s*[^-]+$/, '').trim();
+          var d = '';
+          try { d = new Date(pubDate).toISOString().split('T')[0]; } catch(e) {}
+          if (title && link && !all.find(function(r) { return r.url === link; })) {
+            all.push({ titulo: title, url: link, fonte: 'Google News', data: d, origem: 'web' });
+          }
+        });
+      }
+    });
+
+    setTimeout(function() {
+      if (done < qs.length) { done = qs.length; Search._finish(all, cb); }
+    }, CONFIG.TIMEOUT_GOOGLE_NEWS);
+  },
+
+  _offline: function(cb) {
+    State.cursos = MOCK_DATA.map(Classifier.classify);
+    State.online = false;
+    UI.setStatus('offline');
+    UI.toast('📦 Modo offline');
+    UI.setOrigin('📦 Offline');
+    State.loadFavs();
+    UI.renderAll();
+    if (cb) cb();
+  },
+
+  _finish: function(results, cb) {
+    UI.loading(false);
+    if (results.length > 0) {
+      State.cursos = results.map(Classifier.classify);
+      State.online = true;
+      UI.setStatus('online');
+      UI.toast('✅ ' + results.length + ' sinais (web)');
+      UI.setOrigin('🌐 Google News');
+      Logger.info('Busca web OK', results.length + ' resultados');
+    } else {
+      State.cursos = MOCK_DATA.map(Classifier.classify);
+      State.online = false;
+      UI.setStatus('offline');
+      UI.toast('⚠️ Offline');
+      UI.setOrigin('📦 Offline');
+      Logger.warn('Sem resultados, usando mock data');
+    }
+    State.loadFavs();
+    UI.renderAll();
+    AppBadge.update(results.length);
+    Notifications.check(results);
+    if (cb) cb();
+  },
+
+  _buildQueries: function() {
+    var qs = [];
+    var P = State.P;
+    var regs = P.regioes.filter(function(r) { return r !== 'nacional'; });
+    if (regs.length === 0) regs.push('nacional');
+    regs = regs.slice(0, 4);
+
+    regs.forEach(function(reg) {
+      var parts = [];
+
+      if (P.esferas.length > 0) {
+        var et = [];
+        if (P.esferas.indexOf('federal') >= 0) et.push('federal');
+        if (P.esferas.indexOf('estadual') >= 0) et.push('estadual');
+        if (P.esferas.indexOf('municipal') >= 0) et.push('prefeitura', 'municipal');
+        if (et.length) parts.push('(' + et.join(' OR ') + ')');
+      }
+
+      if (P.areas.length > 0) {
+        var at = [];
+        P.areas.forEach(function(a) {
+          if (Classifier.AREA_TERMS[a]) at = at.concat(Classifier.AREA_TERMS[a].slice(0, 4));
+        });
+        if (at.length) parts.push('(' + at.join(' OR ') + ')');
+      }
+
+      if (P.customs.length > 0) parts.push('(' + P.customs.join(' OR ') + ')');
+
+      var rn = reg === 'nacional' ? 'Brasil' : (Classifier.REG_QUERY[reg] || reg);
+    var earlyTerms = '(solicitação OR "orçamento aprovado" OR dotação OR "comissão organizadora" OR "grupo de trabalho" OR "banca definida" OR "banca contratada" OR Cebraspe OR FGV OR Cesgranrio OR "extrato de contrato" OR "dispensa de licitação" OR iminente OR "previsão de edital" OR tramitação OR autorizado OR "escolha da banca")';
+    var baseQuery = parts.length ? '(' + parts.join(' AND ') + ')' : 'concurso público edital';
+    var q = (parts.length > 0) ? baseQuery + ' ' + rn + ' 2026' : baseQuery + ' ' + earlyTerms + ' ' + rn + ' 2026';
+      qs.push(q);
+    });
+
+    if (qs.length === 0) qs = ['concurso público edital Brasil 2026'];
+    return qs;
+  }
+};
+
+var Settings = {
+  open: function() {
+    document.getElementById('drawerOverlay').classList.add('open');
+    document.getElementById('drawer').classList.add('open');
+    var logs = Logger.getLogs();
+    var errs = logs.filter(function(l){return l.level==='error';}).length;
+    var warns = logs.filter(function(l){return l.level==='warn';}).length;
+    var diag = document.getElementById('diagInfo');
+    if(diag) diag.innerHTML = logs.length + ' eventos registrados | ' + errs + ' erros | ' + warns + ' alertas<br><small>Último: ' + (logs[0]?logs[0].time.split('T')[0]+' '+logs[0].time.split('T')[1].substring(0,5):'nenhum') + '</small>';
+  },
+
+  close: function() {
+    document.getElementById('drawerOverlay').classList.remove('open');
+    document.getElementById('drawer').classList.remove('open');
+  },
+
+  toggleDark: function() {
+    var dark = document.getElementById('cfgDark').checked;
+    document.body.classList.toggle('light', !dark);
+    localStorage.setItem(CONFIG.LS_KEYS.dark, dark);
+  },
+
+  toggleAnim: function() {
+    var anim = document.getElementById('cfgAnim').checked;
+    localStorage.setItem(CONFIG.LS_KEYS.anim, anim);
+    var els = document.querySelectorAll('.radar-ring,.dot,.splash i,.lbar.on,.rp i');
+    els.forEach(function(el) {
+      el.style.animationPlayState = anim ? 'running' : 'paused';
+    });
+  },
+
+  setMode: function() {
+    Search.MODE = document.getElementById('cfgMode').value;
+    localStorage.setItem(CONFIG.LS_KEYS.mode, Search.MODE);
+    UI.toast('Modo: ' + Search.MODE);
+  },
+
+  exportData: function() {
+    var data = JSON.stringify({prefs:State.P,favs:JSON.parse(localStorage.getItem(CONFIG.LS_KEYS.favs)||'[]'),dark:localStorage.getItem(CONFIG.LS_KEYS.dark),mode:Search.MODE},null,2);
+    var blob = new Blob([data],{type:'application/json'});
+    var file = new File([blob],'sintoniza-backup.json',{type:'application/json'});
+    if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
+      navigator.share({files:[file],title:'Sintoniza Concursos - Backup',text:'Minhas preferências'}).then(function(){UI.toast('📤 Compartilhado!');}).catch(function(){Settings._downloadFallback(blob);});
+    }else if(navigator.share){
+      navigator.share({title:'Sintoniza Backup',text:data}).then(function(){UI.toast('📤 Compartilhado!');}).catch(function(){Settings._downloadFallback(blob);});
+    }else{Settings._downloadFallback(blob);}
+  },
+  _downloadFallback:function(blob){var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='sintoniza-backup.json';a.click();UI.toast('📥 Backup baixado!');},
+
+  importData: function() {
+    document.getElementById('importFile').click();
+  },
+
+  handleImport: function(e) {
+    var file = e.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(ev) {
+      try {
+        var data = JSON.parse(ev.target.result);
+        if (data.prefs) { State.P = data.prefs; State.savePrefs(); }
+        if (data.favs) localStorage.setItem(CONFIG.LS_KEYS.favs, JSON.stringify(data.favs));
+        if (data.dark !== undefined) {
+          localStorage.setItem(CONFIG.LS_KEYS.dark, data.dark);
+          document.getElementById('cfgDark').checked = data.dark !== 'false';
+          document.body.classList.toggle('light', data.dark === 'false');
+        }
+        if (data.mode) {
+          Search.MODE = data.mode;
+          localStorage.setItem(CONFIG.LS_KEYS.mode, data.mode);
+          document.getElementById('cfgMode').value = data.mode;
+        }
+        App.buildCanaisUI();
+        State.loadFavs();
+        UI.renderAll();
+        UI.toast('📤 Preferências importadas!');
+        Settings.close();
+      } catch(ex) {
+        UI.toast('❌ Arquivo inválido');
+      }
+    };
+    reader.readAsText(file);
+  },
+
+  clearAll: function() {
+    if (!confirm('Tem certeza? Isso apagará TODAS as preferências, favoritos e configurações.')) return;
+    localStorage.clear();
+    State.P = { esferas: [], regioes: [], areas: [], customs: [] };
+    State.cursos = [];
+    State.TC = [];
+    document.getElementById('cfgDark').checked = true;
+    document.body.classList.remove('light');
+    Search.MODE = 'auto';
+    document.getElementById('cfgMode').value = 'auto';
+    document.getElementById('syncIntervalRow').style.display = 'none';
+    Settings.stopAutoSync();
+    App.buildCanaisUI();
+    UI.renderAll();
+    Settings.close();
+    document.getElementById('app').style.display = 'none';
+    document.getElementById('onboarding').style.display = 'flex';
+    UI.toast('🗑 Dados limpos!');
+  },
+
+  
+
+  _syncTimer: null,
+  _lastCount: 0,
+
+  toggleAutoSync: function() {
+    var on = document.getElementById('cfgAutoSync').checked;
+    localStorage.setItem(CONFIG.LS_KEYS.autosync, on);
+    document.getElementById('syncIntervalRow').style.display = on ? '' : 'none';
+    if (on) {
+      this.startAutoSync();
+      UI.toast('🔄 Busca automática ativada');
+      if ('Notification' in window && Notification.permission === 'default') {
+        Notification.requestPermission().then(function(p) {
+          if (p === 'granted') UI.toast('🔔 Notificações ativadas!');
+        });
+      }
+    } else {
+      this.stopAutoSync();
+      UI.toast('⏸️ Busca automática pausada');
+    }
+  },
+
+  setSyncInterval: function() {
+    var min = parseInt(document.getElementById('cfgSyncInterval').value);
+    localStorage.setItem(CONFIG.LS_KEYS.syncinterval, min);
+    if (document.getElementById('cfgAutoSync').checked) {
+      this.stopAutoSync();
+      this.startAutoSync();
+    }
+    UI.toast('⏱️ A cada ' + min + ' min');
+  },
+
+  startAutoSync: function() {
+    var self = this;
+    var min = parseInt(localStorage.getItem(CONFIG.LS_KEYS.syncinterval) || CONFIG.SYNC_DEFAULT_INTERVAL);
+    var ms = min * 60 * 1000;
+    this._syncTimer = setInterval(function() {
+      if (document.hidden) return; // não busca se aba não visível
+      self._silentSearch();
+    }, ms);
+    document.getElementById('syncDot').classList.add('active');
+  },
+
+  stopAutoSync: function() {
+    if (this._syncTimer) { clearInterval(this._syncTimer); this._syncTimer = null; }
+    document.getElementById('syncDot').classList.remove('active');
+  },
+
+  _silentSearch: function() {
+    var oldCount = State.cursos.length;
+    Search.buscar(function() {
+      var newCount = State.cursos.length - oldCount;
+      if (newCount > 0) {
+        UI.toast('🔄 ' + newCount + ' novos sinais!');
+      }
+      document.getElementById('syncDot').style.background = newCount > 0 ? 'var(--success)' : 'var(--primary)';
+      setTimeout(function() {
+        document.getElementById('syncDot').style.background = 'var(--primary)';
+      }, 3000);
+    });
+  },
+
+  restore: function() {
+    var el = document.getElementById('cfgMode');
+    if (el) el.value = Search.MODE;
+    var autoSync = localStorage.getItem(CONFIG.LS_KEYS.autosync) === 'true';
+    var syncEl = document.getElementById('cfgAutoSync');
+    if (syncEl) syncEl.checked = autoSync;
+    var syncInterval = localStorage.getItem(CONFIG.LS_KEYS.syncinterval) || CONFIG.SYNC_DEFAULT_INTERVAL;
+    var intervalEl = document.getElementById('cfgSyncInterval');
+    if (intervalEl) intervalEl.value = syncInterval;
+    if (autoSync) {
+      document.getElementById('syncIntervalRow').style.display = '';
+      Settings.startAutoSync();
+    }
+
+    if (localStorage.getItem(CONFIG.LS_KEYS.dark) === 'false') {
+      var d = document.getElementById('cfgDark');
+      if (d) d.checked = false;
+      document.body.classList.add('light');
+    }
+
+    if (localStorage.getItem(CONFIG.LS_KEYS.anim) === 'false') {
+      var a = document.getElementById('cfgAnim');
+      if (a) a.checked = false;
+      this.toggleAnim();
+    }
+  }
+};
+
+var MOCK_DATA = [
+  {titulo:"PF: 1.500 vagas Agente - Edital 2026",url:"https://www.gov.br/pf",fonte:"PF",data:"2026-07-28",origem:"rss"},
+  {titulo:"INSS: 1.000 vagas Técnico do Seguro Social",url:"https://www.inss.gov.br",fonte:"INSS",data:"2026-07-27",origem:"rss"},
+  {titulo:"Pref Rio Branco-AC: 200 vagas Guarda Municipal",url:"#",fonte:"Pref AC",data:"2026-07-27",origem:"rss"},
+  {titulo:"PM-RO: 600 vagas Soldado - Edital publicado",url:"#",fonte:"PM-RO",data:"2026-07-26",origem:"rss"},
+  {titulo:"Receita Federal: 230 vagas Auditor Fiscal",url:"#",fonte:"RFB",data:"2026-07-26",origem:"rss"},
+  {titulo:"PC-AM: 50 vagas Delegado de Polícia",url:"#",fonte:"PC-AM",data:"2026-07-25",origem:"rss"},
+  {titulo:"BB: 2.000 vagas Escriturário",url:"#",fonte:"BB",data:"2026-07-25",origem:"rss"},
+  {titulo:"CGU: 60 vagas Auditor Federal autorizadas",url:"#",fonte:"CGU",data:"2026-07-24",origem:"rss"},
+  {titulo:"TJ-AC: 30 vagas Técnico Judiciário",url:"#",fonte:"TJ-AC",data:"2026-07-23",origem:"rss"},
+  {titulo:"Manaus-AM: 150 vagas Saúde",url:"#",fonte:"Manaus",data:"2026-07-22",origem:"rss"}
+];
+
+var State = {
+  P: { esferas: [], regioes: [], areas: [], customs: [] },
+  cursos: [],
+  online: false,
+  TC: [],
+
+  loadPrefs: function() {
+    try {
+      var p = JSON.parse(localStorage.getItem(CONFIG.LS_KEYS.prefs));
+      if (p) {
+        this.P.esferas = p.esferas || [];
+        this.P.regioes = p.regioes || [];
+        this.P.areas = p.areas || [];
+        this.P.customs = p.customs || [];
+        return true;
+      }
+    } catch(e) {}
+    return false;
+  },
+
+  savePrefs: function() {
+    localStorage.setItem(CONFIG.LS_KEYS.prefs, JSON.stringify(this.P));
+    localStorage.setItem(CONFIG.LS_KEYS.has, '1');
+  },
+
+    _readUrls: [],
+  loadRead: function() {
+    try { this._readUrls = JSON.parse(localStorage.getItem(CONFIG.LS_KEYS.read) || '[]'); } catch(e) { this._readUrls = []; }
+  },
+  markRead: function(url) {
+    if (this._readUrls.indexOf(url) < 0) {
+      this._readUrls.push(url);
+      if (this._readUrls.length > 200) this._readUrls = this._readUrls.slice(-200);
+      localStorage.setItem(CONFIG.LS_KEYS.read, JSON.stringify(this._readUrls));
+    }
+  },
+  isRead: function(url) { return this._readUrls.indexOf(url) >= 0; },
+
+  loadFavs: function() {
+    try {
+      var f = JSON.parse(localStorage.getItem(CONFIG.LS_KEYS.favs) || '[]');
+      this.cursos.forEach(function(c) { c.favorito = f.indexOf(c.url) >= 0; });
+    } catch(e) {}
+  },
+
+  toggleFav: function(url) {
+    var c = this.cursos.find(function(x) { return x.url === url; });
+    if (!c) return;
+    c.favorito = !c.favorito;
+    try {
+      var f = JSON.parse(localStorage.getItem(CONFIG.LS_KEYS.favs) || '[]');
+      var i = f.indexOf(url);
+      if (i >= 0) f.splice(i, 1);
+      else f.push(url);
+      localStorage.setItem(CONFIG.LS_KEYS.favs, JSON.stringify(f));
+    } catch(e) {}
+    UI.renderAll();
+    if(document.getElementById('tb-fav').classList.contains('on')) UI.renderFavs();
+    if(c.favorito && navigator.vibrate) navigator.vibrate(30);
+    UI.toast(c.favorito ? '⭐ Favoritado!' : 'Removido');
+  },
+
+  match: function(c) {
+    return (this.P.esferas.length === 0 || this.P.esferas.indexOf(c.esfera) >= 0) &&
+           (this.P.regioes.length === 0 || this.P.regioes.indexOf(c.regiao) >= 0) &&
+           (this.P.areas.length === 0 || this.P.areas.indexOf(c.area) >= 0);
+  }
+};
+
+var UI = {
+  setStatus: function(m) {
+    var dot = document.getElementById('sd');
+    var lbl = document.getElementById('stl');
+    dot.className = 'dot ' + (m === 'online' ? 'on' : m === 'searching' ? 'busy' : 'off');
+    lbl.textContent = m;
+    lbl.className = 'stl ' + (m === 'online' ? 'on' : m === 'searching' ? 'busy' : 'off');
+  },
+
+  loading: function(show) {
+    var lb = document.getElementById('lb');
+    if (show) lb.classList.add('on');
+    else lb.classList.remove('on');
+  },
+
+  showSkeleton: function() {
+    var sk = '';
+    for(var i=0;i<4;i++) sk += '<div class="skeleton-card"><div class="skeleton skeleton-line"></div><div class="skeleton skeleton-line short"></div><div class="skeleton skeleton-line" style="height:8px"></div></div>';
+    document.getElementById('sl').innerHTML = sk;
+  },
+
+  setOrigin: function(text) {
+    var el = document.getElementById('oi');
+    if (el) el.textContent = text;
+  },
+
+  toast: function(msg) {
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.style.display = 'block';
+    clearTimeout(window._tt);
+    window._tt = setTimeout(function() { t.style.display = 'none'; }, 2500);
+  },
+
+  switchTab: function(name) {
+    document.querySelectorAll('.tab').forEach(function(x) { x.classList.remove('on'); });
+    document.querySelectorAll('.tbc').forEach(function(x) { x.classList.remove('on'); });
+    var t = document.querySelector('[data-tab="' + name + '"]');
+    if (t) t.classList.add('on');
+    var el = document.getElementById('tb-' + name);
+    if (el) el.classList.add('on');
+  },
+
+  renderAll: function() {
+    this.renderRadar();
+    this.renderFavs();
+  },
+
+  _cardHTML: function(c, opts) {
+    opts = opts || {};
+    var urg = c.status === 'encerrando' ? ' urg' : '';
+    var d = c.data ? c.data.split('-').reverse().join('/') : '';
+    var showRead = opts.showRead !== false;
+    var showShare = opts.showShare && navigator.share;
+    var showFav = opts.showFav !== false;
+    return '<div class="scard2' + urg + (showRead && State.isRead(c.url) ? ' read' : '') + '">' +
+      '<div class="top">' + (showRead && !State.isRead(c.url) ? '<span class="unread-dot"></span>' : '') +
+      '<span class="org">' + App._sanitize(c.orgao) + '</span>' +
+      '<span class="tag t-' + c.status + '">' + {aberto:'ABERTO','em-breve':'EM BREVE',encerrando:'ENCERRANDO',sinal:'SINAL',desconhecido:'NOVO'}[c.status] + '</span></div>' +
+      '<div class="inf">' + App._sanitize(c.titulo.substring(0,110)) + '</div>' +
+      '<div class="tags2"><span class="tag t-' + c.esfera + '">' + {federal:'FEDERAL',estadual:'ESTADUAL',municipal:'MUNICIPAL'}[c.esfera] + '</span>' +
+      (c.vagas ? '<span class="tag" style="background:rgba(148,163,184,.15);color:#94a3b8">' + c.vagas + ' vagas</span>' : '') +
+      '<span class="tag" style="background:rgba(148,163,184,.1);color:#94a3b8">' + App._sanitize((c.fonte || '').substring(0, 16)) + '</span></div>' +
+      '<div class="bot"><span><i class="far fa-clock"></i> ' + d + '</span><div style="display:flex;gap:5px">' +
+      (c.status === 'aberto' || c.status === 'em-breve' ? '<button class="fv" style="font-size:10px" data-action="cal" data-url="' + c.url + '" title="Calendario"><i class="far fa-calendar-plus"></i></button>' : '') +
+      (showFav ? '<button class="fv' + (c.favorito ? ' on' : '') + '" data-action="fav" data-url="' + c.url + '"><i class="fas fa-star"></i></button>' : '') +
+      '<a href="' + c.url + '" target="_blank" data-action="open" data-url="' + c.url + '" class="lk">Abrir</a>' +
+      (showShare ? ' <button class="fv" style="font-size:10px" data-action="share" data-url="' + c.url + '" data-title="' + App._sanitize(c.titulo).substring(0, 60) + '"><i class="fas fa-share-alt"></i></button>' : '') +
+      '</div></div></div>';
+  },
+
+  _extractDate: function(t){var p=[/(\d{1,2})\/(\d{1,2})\/(\d{4})/,/(\d{1,2})\s+de\s+(\w+)\s+(?:de\s+)?(\d{4})/,/prova\s*(?:em|:)?\s*(\d{1,2})\/(\d{1,2})/],mo={janeiro:1,fevereiro:2,marco:3,'março':3,abril:4,maio:5,junho:6,julho:7,agosto:8,setembro:9,outubro:10,novembro:11,dezembro:12};for(var i=0;i<p.length;i++){var r=t.match(p[i]);if(r){var d,y,mt;if(i===0){d=+r[1];mt=+r[2];y=+r[3]}else if(i===1){d=+r[1];mt=mo[r[2].toLowerCase()]||1;y=+r[3]}else{d=+r[1];mt=+r[2];y=new Date().getFullYear()}if(d>=1&&d<=31&&mt>=1&&mt<=12&&y>=2024)return{day:d,month:mt,year:y,ds:String(d).padStart(2,'0')+'/'+String(mt).padStart(2,'0')+'/'+y}}}},
+_addToCalendar: function(c){var dt=this._extractDate(c.titulo)||this._extractDate(c.descricao||'');if(!dt){UI.toast('Data nao encontrada');return}var ics='BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:'+dt.year+String(dt.month).padStart(2,'0')+String(dt.day).padStart(2,'0')+'T080000\nSUMMARY:Prova '+c.orgao+'\nDESCRIPTION:'+c.titulo+'\nEND:VEVENT\nEND:VCALENDAR';var b=new Blob([ics],{type:'text/calendar'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='prova-'+c.orgao.replace(/[^a-z0-9]/gi,'-').substring(0,30)+'.ics';a.click();UI.toast('📅 '+dt.ds)},
+_setupDelegation: function() {
+    var lists = [
+      { id: 'sl', showRead: true },
+      { id: 'fl', showRead: false }
+    ];
+    for (var i = 0; i < lists.length; i++) {
+      var el = document.getElementById(lists[i].id);
+      if (!el || el._delegated) continue;
+      el._delegated = true;
+      el.addEventListener('click', function(e) {
+        var btn = e.target.closest('[data-action]');
+        if (!btn) return;
+        var action = btn.dataset.action;
+        var url = btn.dataset.url;
+        e.preventDefault();
+        if (action === 'fav') State.toggleFav(url);
+        if (action === 'open') { State.markRead(url); setTimeout(function(){UI.renderRadar()}, 100); window.open(url, '_blank'); }
+        if (action === 'share') App.shareCard(url, btn.dataset.title);
+        if (action === 'cal') { var cd = State.cursos.find(function(x){return x.url===url;}); if(cd) UI._addToCalendar(cd); }
+      });
+    }
+  },
+
+  renderRadar: function() {
+    var f = State.cursos.filter(function(c) { return State.match(c); });
+    if (this._statusFilter) f = f.filter(function(c) { return c.status === App._statusFilter; });
+    var q = (document.getElementById('sr').value || '').toLowerCase();
+    if (q) f = f.filter(function(c) { return c.titulo.toLowerCase().indexOf(q) >= 0 || c.orgao.toLowerCase().indexOf(q) >= 0; });
+
+    var ab = f.filter(function(c) { return c.status === 'aberto'; }).length;
+    var si = f.filter(function(c) { return c.status === 'sinal'; }).length;
+    var en = f.filter(function(c) { return c.status === 'encerrando'; }).length;
+    var eb = f.filter(function(c) { return c.status === 'em-breve'; }).length;
+    var fa = f.filter(function(c) { return c.favorito; }).length;
+
+    document.getElementById('sc').textContent = f.length;
+    document.getElementById('rs').textContent = f.length + ' sinais • ' + ab + ' abertos • ' + si + ' inicio';
+    document.getElementById('scl').textContent = '(' + f.length + ')';
+
+    document.getElementById('scards').innerHTML =
+      '<div class="scard cg"><div class="si"><i class="fas fa-file-contract"></i></div><div><div class="v">' + ab + '</div><div class="l">Abertos</div></div></div>' +
+      '<div class="scard co"><div class="si"><i class="fas fa-clock"></i></div><div><div class="v">' + en + '</div><div class="l">Encerrando</div></div></div>' +
+      '<div class="scard cb"><div class="si"><i class="fas fa-hourglass"></i></div><div><div class="v">' + eb + '</div><div class="l">Em Breve</div></div></div>' +
+      '<div class="scard cp"><div class="si"><i class="fas fa-star"></i></div><div><div class="v">' + fa + '</div><div class="l">Favoritos</div></div></div>';
+
+var emp = document.getElementById('eR');
+    if (f.length === 0) { document.getElementById('sl').innerHTML = ''; emp.style.display = 'block'; return; }
+    emp.style.display = 'none';
+    var sb = App._sortBy || 'status';
+    f.sort(function(a, b) {
+      if (sb === 'recent') return (b.data || '').localeCompare(a.data || '');
+      if (sb === 'vagas') return (b.vagas || 0) - (a.vagas || 0);
+      if (a.status === 'encerrando' && b.status !== 'encerrando') return -1;
+      if (b.status === 'encerrando' && a.status !== 'encerrando') return 1;
+      if (a.status === 'aberto' && b.status !== 'aberto') return -1;
+      if (b.status === 'aberto' && a.status !== 'aberto') return 1;
+      return (b.data || '').localeCompare(a.data || '');
+    });
+
+    var totalPages = Math.ceil(f.length / this._pageSize);
+    if (this._currentPage > totalPages) this._currentPage = 1;
+    var start = (this._currentPage - 1) * this._pageSize;
+    var pageItems = f.slice(start, start + this._pageSize);
+
+    document.getElementById('sl').innerHTML = pageItems.map(function(c) {
+      return UI._cardHTML(c, {showShare: true, showRead: true, showFav: true});
+    }).join('');
+
+    UI._setupDelegation();
+    if (this._currentPage < totalPages) {
+      var moreBtn = document.createElement('button');
+      moreBtn.textContent = 'Mostrar mais (' + (f.length - start - this._pageSize) + ' restantes)';
+      moreBtn.style.cssText = 'width:100%;padding:8px;margin-top:6px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--primary);font-size:10px;font-weight:600;cursor:pointer;font-family:var(--font)';
+      moreBtn.onclick = function() { App._currentPage++; UI.renderRadar(); };
+      document.getElementById('sl').appendChild(moreBtn);
+    } else if (this._currentPage > 1) {
+      var lessBtn = document.createElement('button');
+      lessBtn.textContent = 'Mostrar menos';
+      lessBtn.style.cssText = 'width:100%;padding:8px;margin-top:6px;background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:10px;cursor:pointer;font-family:var(--font)';
+      lessBtn.onclick = function() { App._currentPage = 1; UI.renderRadar(); };
+      document.getElementById('sl').appendChild(lessBtn);
+    }
+  },
+
+    renderStats: function(){var a={},c=State.cursos;if(!c.length){document.getElementById('statsArea').innerHTML='<p style=font-size:10px;color:var(--muted)>Sem dados.</p>';return}c.forEach(function(x){a[x.area]=(a[x.area]||0)+1});var m=Math.max.apply(null,Object.values(a))||1,co={policial:'#f87171',fiscal:'#34d399',tribunais:'#60a5fa',administrativa:'#94a3b8',bancaria:'#fbbf24',educacao:'#a78bfa',saude:'#f472b6',prefeituras:'#fb923c',legislativo:'#38bdf8',agencias:'#4ade80'},h='';for(var k in a){var p=Math.round(a[k]/c.length*100);h+='<div class=stat-card><div class=sa>'+(Classifier.AREA_LABELS[k]||k)+'</div><div class=sv style=color:'+(co[k]||'#94a3b8')+'>'+a[k]+'</div><div class=sb><div class=sb-fill style=width:'+p+'%;background:'+(co[k]||'#94a3b8')+'></div></div></div>'}document.getElementById('statsArea').innerHTML=h;var o={};c.forEach(function(x){var n=x.orgao||'Outro';o[n]=(o[n]||0)+1});var s=Object.keys(o).sort(function(a,b){return o[b]-o[a]}).slice(0,8),om=o[s[0]]||1,l='';s.forEach(function(n){var p=Math.round(o[n]/om*100);l+='<div class=stats-row><span style=width:120px;text-align:right;overflow:hidden;white-space:nowrap;text-overflow:ellipsis>'+App._sanitize(n)+'</span><span style=font-weight:700;width:24px;text-align:right>'+o[n]+'</span><div class=sr-bar><div class=sr-fill style=width:'+p+'%></div></div></div>'});document.getElementById('statsOrgaos').innerHTML=l},
+  renderFavs: function() {
+    var f = State.cursos.filter(function(c) { return c.favorito; });
+    if (f.length === 0) { document.getElementById('fl').innerHTML = ''; document.getElementById('eF').style.display = 'block'; return; }
+    document.getElementById('eF').style.display = 'none';
+    document.getElementById('fl').innerHTML = f.map(function(c) {
+      return UI._cardHTML(c, {showShare: true, showRead: false, showFav: true});
+    }).join('');
+    UI._setupDelegation();
+  }
+};
+
+var Notifications = {
+  getLastIds: function() {
+    try { return JSON.parse(localStorage.getItem(CONFIG.LS_KEYS.lastUrls) || '[]'); } catch(e) { return []; }
+  },
+  saveLastIds: function(urls) {
+    try { localStorage.setItem(CONFIG.LS_KEYS.lastUrls, JSON.stringify(urls)); } catch(e) {}
+  },
+
+  check: function(novos) {
+    if (!novos || novos.length === 0) return;
+    var lastIds = this.getLastIds();
+    var fresh = novos.filter(function(c) { return lastIds.indexOf(c.url) < 0; });
+    if (fresh.length > 0) {
+      var newIds = novos.map(function(c) { return c.url; }).slice(0, 100);
+      this.saveLastIds(newIds);
+      if ('Notification' in window && Notification.permission === 'granted') {
+        new Notification('📢 Sintoniza Concursos', {
+          body: fresh.length + ' novos sinais encontrados!',
+          tag: 'sintoniza'
+        });
+      }
+      try {
+        var ctx = new (window.AudioContext || window.webkitAudioContext)();
+        var osc = ctx.createOscillator();
+        var gain = ctx.createGain();
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.type = 'sine';
+        gain.gain.setValueAtTime(0.3, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
+        osc.frequency.setValueAtTime(800, ctx.currentTime);
+        osc.frequency.setValueAtTime(1000, ctx.currentTime + 0.08);
+        osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.15);
+      } catch(e) {}
+    }
+  }
+};
+
+var PWA = {
+  _initialized: false,
+  deferredPrompt: null,
+
+  install: function() {
+    if (this.deferredPrompt) {
+      this.deferredPrompt.prompt();
+      this.deferredPrompt.userChoice.then(function(r) {
+        if (r.outcome === 'accepted') document.getElementById('installBn').classList.remove('show');
+        PWA.deferredPrompt = null;
+      });
+    }
+  },
+
+  init: function() {
+    if(this._initialized)return;this._initialized=true;
+    window.addEventListener('beforeinstallprompt', function(e) {
+      e.preventDefault();
+      PWA.deferredPrompt = e;
+      document.getElementById('installBn').classList.add('show');
+    });
+    window.addEventListener('appinstalled', function() {
+      document.getElementById('installBn').classList.remove('show');
+      UI.toast('✅ App instalado!');
+    });
+    setTimeout(function() { try { PWA._subscribePush(); } catch(e) {} }, 5000);
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(function(e) {
+        Logger.warn('SW registro falhou', e.message);
+      });
+    }
+  }
+};
+var Logger = {
+  _logs: [],
+  _maxLogs: 50,
+
+  init: function() {
+    try { this._logs = JSON.parse(localStorage.getItem(CONFIG.LS_KEYS.logs) || '[]'); } catch(e) { this._logs = []; }
+  },
+
+  log: function(level, msg, detail) {
+    var entry = {
+      time: new Date().toISOString(),
+      level: level, // 'error', 'warn', 'info'
+      msg: msg,
+      detail: detail || ''
+    };
+    this._logs.unshift(entry);
+    if (this._logs.length > this._maxLogs) this._logs = this._logs.slice(0, this._maxLogs);
+    this._save();
+  },
+
+  error: function(msg, detail) { this.log('error', msg, detail); },
+  warn: function(msg, detail) { this.log('warn', msg, detail); },
+  info: function(msg, detail) { this.log('info', msg, detail); },
+
+  _save: function() {
+    try { localStorage.setItem(CONFIG.LS_KEYS.logs, JSON.stringify(this._logs)); } catch(e) {}
+  },
+
+  getLogs: function() { return this._logs; },
+
+  exportLogs: function() {
+    var data = JSON.stringify(this._logs, null, 2);
+    var blob = new Blob([data], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'sintoniza-diagnostico-' + new Date().toISOString().split('T')[0] + '.json';
+    a.click();
+    UI.toast('📤 Diagnóstico exportado!');
+  },
+
+  clearLogs: function() {
+    this._logs = [];
+    this._save();
+    UI.toast('🗑 Logs limpos!');
+  }
+};
+window.addEventListener('error', function(e) {
+  Logger.error('Erro no app: ' + e.message, e.filename + ':' + e.lineno);
+  if (!document.getElementById('app')?.style?.display || document.getElementById('app').style.display === 'none') {
+    if (document.getElementById('splash')) document.getElementById('splash').style.display = 'none';
+    document.body.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;background:#0f172a;color:#e2e8f0;font-family:system-ui,sans-serif;text-align:center;padding:24px;gap:16px"><i class="fas fa-exclamation-triangle" style="font-size:48px;color:#f87171"></i><h2 style="font-size:20px">Algo deu errado</h2><p style="font-size:13px;color:#94a3b8;max-width:300px">Recarregue a página ou limpe os dados do navegador.</p><button onclick="localStorage.clear();location.reload()" style="padding:12px 24px;border-radius:10px;border:none;background:#f87171;color:#fff;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px;font-family:system-ui">Limpar dados e recarregar</button><p style="font-size:10px;color:#4b5563;margin-top:16px">Sintoniza Concursos — Victor Jucá</p></div>';
+  }
+});
+
+var PullToRefresh = {
+  _startY: 0, _pulling: false,
+  init: function() {
+    var self = this;
+    var radar = document.getElementById('tb-radar');
+    radar.addEventListener('touchstart', function(e) {
+      if (radar.scrollTop <= 0) { self._startY = e.touches[0].clientY; self._pulling = true; }
+    }, {passive: true});
+    radar.addEventListener('touchmove', function(e) {
+      if (!self._pulling) return;
+      var dy = e.touches[0].clientY - self._startY;
+      if (dy > 40) document.getElementById('pullInd').classList.add('show');
+      else document.getElementById('pullInd').classList.remove('show');
+    }, {passive: true});
+    radar.addEventListener('touchend', function() {
+      if (document.getElementById('pullInd').classList.contains('show')) {
+        Search.buscar();
+      }
+      document.getElementById('pullInd').classList.remove('show');
+      self._pulling = false;
+    });
+  }
+};
+var StatusBar = {
+  setColor: function(color) { 
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.content = color;
+  }
+};
+StatusBar.setColor('#0f172a'); // default dark
+var _origToggleDark = Settings.toggleDark;
+Settings.toggleDark = function() {
+  _origToggleDark.call(Settings);
+  var isDark = document.getElementById('cfgDark').checked;
+  StatusBar.setColor(isDark ? '#0f172a' : '#f8fafc');
+};
+var AppBadge = {
+  update: function(count) {
+    if (navigator.setAppBadge) {
+      if (count > 0) navigator.setAppBadge(count).catch(function(){});
+      else navigator.clearAppBadge().catch(function(){});
+    }
+  }
+};
+var SwipeNav = {
+  _startX: 0, _startY: 0,
+  init: function() {
+    var self = this;
+    var tabs = ['radar','fav','estatisticas','canais'];
+    document.addEventListener('touchstart', function(e) {
+      self._startX = e.touches[0].clientX;
+      self._startY = e.touches[0].clientY;
+    }, {passive: true});
+    document.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - self._startX;
+      var dy = e.changedTouches[0].clientY - self._startY;
+      if (Math.abs(dx) < 50 || Math.abs(dy) > Math.abs(dx)) return; // ignore vertical
+      var current = document.querySelector('.tab.on')?.dataset?.tab;
+      var idx = tabs.indexOf(current);
+      if (dx < -30 && idx < tabs.length-1) UI.switchTab(tabs[idx+1]);
+      if (dx > 30 && idx > 0) UI.switchTab(tabs[idx-1]);
+      document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on');});
+      var t = document.querySelector('[data-tab="'+tabs[Math.min(Math.max(idx+(dx<-30?1:dx>30?-1:0),0),tabs.length-1)]+'"]');
+      if(t) t.classList.add('on');
+    }, {passive: true});
+  }
+};
+var StatusHelp = {
+  show: function() {
+    var overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:700;display:flex;align-items:center;justify-content:center';
+    overlay.innerHTML = '<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;max-width:320px;width:90%" onclick="event.stopPropagation()">' +
+      '<h3 style="font-size:14px;margin-bottom:12px">Status dos Sinais</h3>' +
+      '<div style="font-size:11px;line-height:1.8;color:var(--muted)">' +
+      '<span class="tag ta" style="margin-right:6px">ABERTO</span> Edital publicado, inscrições rolando<br><br>' +
+      '<span class="tag tx" style="margin-right:6px">ENCERRANDO</span> Últimos dias de inscrição<br><br>' +
+      '<span class="tag tb" style="margin-right:6px">EM BREVE</span> Banca definida, edital próximo<br><br>' +
+      '<span class="tag" style="background:rgba(148,163,184,.15);color:var(--muted);margin-right:6px">SINAL</span> Fase inicial: orçamento, comissão, autorização<br><br>' +
+      '<span class="tag" style="background:rgba(148,163,184,.1);color:var(--muted);margin-right:6px">NOVO</span> Notícia não classificada</div>' +
+      '<button onclick="this.parentElement.parentElement.remove()" style="width:100%;margin-top:14px;padding:8px;border-radius:8px;border:none;background:var(--primary);color:#0f172a;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font)">Entendi</button></div>';
+    overlay.onclick = function() { this.remove(); };
+    document.body.appendChild(overlay);
+  }
+};
+var DataLoader = {
+  _ready: false,
+  load: function(cb) {
+    if (this._ready) { cb(); return; }
+    fetch('js/data.json')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data && data.length > 0) {
+          MOCK_DATA = data.map(function(item) {
+            return {titulo:item.title||item.titulo,url:item.url,fonte:item.blog||item.fonte,data:item.date||item.data,origem:'rss',categorias:item.categories||item.categorias||[]};
+          });
+          Logger.info('Dados externos carregados', data.length + ' artigos');
+        }
+        DataLoader._ready = true; cb();
+      })
+      .catch(function() {
+        DataLoader._ready = true; cb(); // usa MOCK_DATA padrão
+      });
+  }
+};
+
+var App = {
+  _sanitize: function(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;},
+  init: function() {
+var _oldKeys = {stz_p:CONFIG.LS_KEYS.prefs,stz_favs:CONFIG.LS_KEYS.favs,stz_read:CONFIG.LS_KEYS.read,stz_logs:CONFIG.LS_KEYS.logs,stz_dark:CONFIG.LS_KEYS.dark,stz_anim:CONFIG.LS_KEYS.anim,stz_mode:CONFIG.LS_KEYS.mode,stz_autosync:CONFIG.LS_KEYS.autosync,stz_syncinterval:CONFIG.LS_KEYS.syncinterval,stz_h:CONFIG.LS_KEYS.has,stz_last_urls:CONFIG.LS_KEYS.lastUrls,stz_battery_reminder:CONFIG.LS_KEYS.battery};
+for (var ok in _oldKeys) {
+  if (!localStorage.getItem(_oldKeys[ok])) {
+    var ov = localStorage.getItem(ok);
+    if (ov !== null) localStorage.setItem(_oldKeys[ok], ov);
+  }
+}
+
+    var hp = State.loadPrefs();
+    State.TC = State.P.customs.slice();
+    setTimeout(function() {
+      document.getElementById('splash').classList.add('hide');
+      setTimeout(function() {
+        document.getElementById('splash').style.display = 'none';
+      }, 500);
+
+      if (hp) {
+        document.getElementById('app').style.display = 'block';
+        App.buildCanaisUI();
+        DataLoader.load(function() { Search.buscar(); });
+      } else {
+        document.getElementById('onboarding').style.display = 'flex';
+      }
+    }, 2000);
+    document.querySelectorAll('.tab').forEach(function(t) {
+      t.onclick = function() {
+        var from = document.querySelector('.tab.on')?.dataset?.tab || '';
+        UI.switchTab(this.dataset.tab);
+        if (from === 'canais' && this.dataset.tab !== 'canais') {
+          App.readCanaisUI();
+          State.savePrefs();
+          Search.buscar();
+        }
+        if (this.dataset.tab === 'fav') UI.renderFavs();
+        if (this.dataset.tab === 'canais') App.buildCanaisUI();
+        if (this.dataset.tab === 'estatisticas') UI.renderStats();
+      };
+    });
+    document.getElementById('br').onclick = function() { Search.buscar(); };
+        document.getElementById('bcfg').onclick = Settings.open;
+    var dt;
+    document.getElementById('sr').oninput = function() {
+      App._statusFilter = null;
+      this.placeholder = 'Filtrar nos resultados...';
+      document.querySelectorAll('.scard').forEach(function(c){c.classList.remove('active-filter');});
+      clearTimeout(dt);
+      dt = setTimeout(function() { UI.renderRadar(); }, 300);
+    };
+
+    Settings.restore();
+    PWA.init();
+    PullToRefresh.init();
+    SwipeNav.init();
+  },
+  
+  _pageSize: CONFIG.PAGE_SIZE,
+  _currentPage: 1,
+  filterByStatus: function(s){
+    this._statusFilter = s;
+    this._currentPage = 1;
+    document.getElementById('sr').placeholder = 'Filtrando: ' + {aberto:'Abertos','em-breve':'Em Breve',encerrando:'Encerrando'}[s] + ' | ✕ limpar';
+    document.querySelectorAll('.scard').forEach(function(c){c.classList.remove('active-filter');});
+    var card = document.querySelector('.scard.' + {aberto:'cg',encerrando:'co','em-breve':'cb'}[s]);
+    if(card) card.classList.add('active-filter');
+    UI.renderRadar();
+},
+
+  
+  _sortBy: 'status',
+  setSort: function() { this._sortBy = document.getElementById('sortBy').value; this._currentPage = 1; UI.renderRadar(); },
+
+  
+  shareCard: function(url, titulo) {
+    navigator.share({title: titulo, text: titulo + ' - via Sintoniza Concursos', url: url})
+      .catch(function() {});
+  },
+
+  buildCanaisUI: function() {
+    var el = { federal: 'Federal', estadual: 'Estadual', municipal: 'Municipal' };
+    document.getElementById('cE').innerHTML = ['federal', 'estadual', 'municipal'].map(function(v) {
+      return '<button class="chip sm' + (State.P.esferas.indexOf(v) >= 0 ? ' on' : '') + '" data-v="' + v + '" onclick="this.classList.toggle(\'on\')">' + el[v] + '</button>';
+    }).join('');
+    document.getElementById('cR').innerHTML = Object.keys(Classifier.REG_LABELS).map(function(v) {
+      return '<button class="chip sm' + (State.P.regioes.indexOf(v) >= 0 ? ' on' : '') + '" data-v="' + v + '" onclick="this.classList.toggle(\'on\')">' + Classifier.REG_LABELS[v] + '</button>';
+    }).join('');
+    document.getElementById('cA').innerHTML = Object.keys(Classifier.AREA_LABELS).map(function(v) {
+      return '<button class="chip sm' + (State.P.areas.indexOf(v) >= 0 ? ' on' : '') + '" data-v="' + v + '" onclick="this.classList.toggle(\'on\')">' + Classifier.AREA_LABELS[v] + '</button>';
+    }).join('');
+    this._renderCustomTags();
+  },
+
+  readCanaisUI: function() {
+    var sel = function(id) {
+      var v = [];
+      document.querySelectorAll('#c' + id + ' .chip.on').forEach(function(b) { v.push(b.dataset.v); });
+      return v;
+    };
+    var e = sel('E'), r = sel('R'), a = sel('A');
+    if (e.length) State.P.esferas = e;
+    if (r.length) State.P.regioes = r;
+    if (a.length) State.P.areas = a;
+  },
+
+  irRadar: function() {
+    this.readCanaisUI();
+    State.savePrefs();
+    UI.switchTab('radar');
+    Search.buscar();
+  },
+
+  start: function() {
+    var sel = function(id) {
+      var v = [];
+      document.querySelectorAll(id + ' .chip.on').forEach(function(b) { v.push(b.dataset.v); });
+      return v;
+    };
+    State.P.esferas = sel('#onbE');
+    State.P.regioes = sel('#onbR');
+    State.P.areas = sel('#onbA');
+    State.P.customs = State.TC.slice();
+    State.savePrefs();
+    document.getElementById('onboarding').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    this.buildCanaisUI();
+    Search.buscar();
+  },
+
+  addCustomOnb: function() {
+    var input = document.getElementById('onbI');
+    var v = input.value.trim();
+    if (v && State.TC.indexOf(v) < 0) {
+      State.TC.push(v);
+      this._renderCustomTags();
+    }
+    input.value = '';
+  },
+
+  addCustomCanal: function() {
+    var input = document.getElementById('cI');
+    var v = input.value.trim();
+    if (v && State.P.customs.indexOf(v) < 0) {
+      State.P.customs.push(v);
+      State.savePrefs();
+      this._renderCustomTags();
+    }
+    input.value = '';
+  },
+
+  _renderCustomTags: function() {
+    var list = State.P.customs.length ? State.P.customs : State.TC;
+    ['onbT', 'cT'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.innerHTML = list.map(function(t, i) {
+        return '<span>' + t + ' <b data-idx="' + i + '" data-from="' + id + '" onclick="App._removeCustom(' + i + ',\'' + id + '\')">&times;</b></span>';
+      }).join('');
+    });
+  },
+
+  _removeCustom: function(i, from) {
+    if (from === 'cT') {
+      State.P.customs.splice(i, 1);
+      State.savePrefs();
+    } else {
+      State.TC.splice(i, 1);
+    }
+    this._renderCustomTags();
+  }
+};
+document.getElementById('onbR').innerHTML = Object.keys(Classifier.REG_LABELS).map(function(v) {
+  return '<button class="chip sm" data-v="' + v + '" onclick="this.classList.toggle(\'on\')">' + Classifier.REG_LABELS[v] + '</button>';
+}).join('');
+
+var areaIcons = {policial:'shield',fiscal:'calculator',tribunais:'gavel',administrativa:'building',bancaria:'piggy-bank',educacao:'graduation-cap',saude:'heart-pulse',prefeituras:'city',legislativo:'landmark',agencias:'scale-balanced'};
+document.getElementById('onbA').innerHTML = Object.keys(Classifier.AREA_LABELS).map(function(v) {
+  return '<button class="chip" data-v="' + v + '" onclick="this.classList.toggle(\'on\')"><i class="fas fa-' + (areaIcons[v] || 'tag') + '"></i> ' + Classifier.AREA_LABELS[v] + '</button>';
+}).join('');
+document.addEventListener('DOMContentLoaded', function() {
+  Logger.init();
+  
+window.addEventListener('online', function() {
+  UI.toast('📡 Conexão restaurada!');
+  if (document.getElementById('app').style.display === 'block') Search.buscar();
+});
+window.addEventListener('offline', function() {
+  UI.toast('⚠️ Sem conexão');
+});
+
+  State.loadRead(); App.init(); 
+  
+  Logger.info('App iniciado', navigator.userAgent.substring(0,80));
+});
+
+</script>
+</body>
+</html>
